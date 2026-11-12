@@ -4,6 +4,8 @@ $description = 'MRV International Pre-School & Day Care, New Mahavir Nagar, Delh
 $keywords = 'MRV International Pre-School, Preschool in New Mahavir Nagar, Play School in New Delhi, Nursery Admission Delhi, Day Care Centre in New Delhi';
 $canonical = 'https://mrvinternational.in/';
 
+require_once __DIR__ . '/mailer.php';
+
 /* ---------- ADMISSION ENQUIRY HANDLER ---------- */
 $enqErrors = [];
 $enqOld = ['child_name' => '', 'parent_name' => '', 'email' => '', 'phone' => '', 'branch' => ''];
@@ -17,40 +19,41 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && ($_POST['form_type'] ?? '') === 'ad
     }
 
     foreach ($enqOld as $k => $v) {
-        $enqOld[$k] = trim(strip_tags($_POST[$k] ?? ''));
+        $enqOld[$k] = mrv_clean_input($_POST[$k] ?? '');
     }
 
-    if (mb_strlen($enqOld['child_name']) < 2) {
-        $enqErrors['child_name'] = "Please enter your child's name.";
+    if (!preg_match('/^[\p{L}\s.\'-]{2,80}$/u', $enqOld['child_name'])) {
+        $enqErrors['child_name'] = "Please enter a valid child's name (2–80 letters).";
     }
-    if (mb_strlen($enqOld['parent_name']) < 2) {
-        $enqErrors['parent_name'] = "Please enter parent's name.";
+    if (!preg_match('/^[\p{L}\s.\'-]{2,80}$/u', $enqOld['parent_name'])) {
+        $enqErrors['parent_name'] = "Please enter a valid parent's name (2–80 letters).";
     }
-    if ($enqOld['email'] !== '' && !filter_var($enqOld['email'], FILTER_VALIDATE_EMAIL)) {
+    if ($enqOld['email'] !== '' && (mb_strlen($enqOld['email']) > 120 || !filter_var($enqOld['email'], FILTER_VALIDATE_EMAIL))) {
         $enqErrors['email'] = 'Please enter a valid email address.';
     }
-    if (!preg_match('/^[0-9+\-\s]{10,15}$/', $enqOld['phone'])) {
-        $enqErrors['phone'] = 'Please enter a valid 10-digit phone number.';
+    if (!mrv_is_valid_phone($enqOld['phone'])) {
+        $enqErrors['phone'] = 'Please enter a valid 10-digit mobile number.';
     }
     if (!in_array($enqOld['branch'], $validBranches, true)) {
         $enqErrors['branch'] = 'Please select a branch.';
     }
 
     if (!$enqErrors) {
-        $to      = 'mrvonlinemarketing@gmail.com';
-        $subject = 'New Admission Enquiry - ' . $enqOld['child_name'] . ' (' . $enqOld['branch'] . ')';
-        $body    = "Child Name: {$enqOld['child_name']}\n"
-            . "Parent Name: {$enqOld['parent_name']}\n"
-            . "Phone: {$enqOld['phone']}\n"
-            . "Email: " . ($enqOld['email'] ?: 'Not provided') . "\n"
-            . "Branch: {$enqOld['branch']}\n";
-        $headers = "From: no-reply@mrvinternational.in\r\n";
-        if ($enqOld['email'] !== '') {
-            $headers .= "Reply-To: {$enqOld['email']}\r\n";
-        }
-        $headers .= "Content-Type: text/plain; charset=UTF-8\r\n";
+        $sentOk = mrv_send_mail(
+            'New Admission Enquiry - ' . $enqOld['child_name'] . ' (' . $enqOld['branch'] . ')',
+            'New Admission Enquiry',
+            [
+                'Child Name'  => $enqOld['child_name'],
+                'Parent Name' => $enqOld['parent_name'],
+                'Phone'       => mrv_normalize_phone($enqOld['phone']),
+                'Email'       => $enqOld['email'],
+                'Branch'      => $enqOld['branch'],
+            ],
+            $enqOld['email'],
+            $enqOld['parent_name']
+        );
 
-        if (@mail($to, $subject, $body, $headers)) {
+        if ($sentOk) {
             header('Location: ./?enq=1#contact');
             exit;
         }

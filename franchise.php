@@ -4,49 +4,56 @@ $description = 'Start your own preschool & daycare franchise with MRV Internatio
 $keywords = 'MRV International Franchise, Preschool Franchise India, Daycare Franchise Delhi, Play School Franchise Opportunity';
 $canonical = 'https://mrvinternational.in/franchise';
 
+require_once __DIR__ . '/mailer.php';
+
 /* ---------- FRANCHISE FORM HANDLER ---------- */
 $fzErrors = [];
 $fzOld = ['name' => '', 'phone' => '', 'email' => '', 'city' => '', 'message' => ''];
-$fzSent = isset($_GET['applied']);
 $validCities = ['Delhi NCR', 'Lucknow', 'Jaipur', 'Rewari', 'Rohtak', 'Panipat', 'Sonipat', 'Mathura', 'Punjab', 'Other'];
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && ($_POST['form_type'] ?? '') === 'franchise_apply') {
     if (!empty($_POST['website'])) {
-        header('Location: franchise?applied=1#apply');
+        header('Location: thankyou?type=franchise');
         exit;
     }
 
     foreach ($fzOld as $k => $v) {
-        $fzOld[$k] = trim(strip_tags($_POST[$k] ?? ''));
+        $fzOld[$k] = mrv_clean_input($_POST[$k] ?? '');
     }
 
-    if (mb_strlen($fzOld['name']) < 2) {
-        $fzErrors['name'] = 'Please enter your full name.';
+    if (!preg_match('/^[\p{L}\s.\'-]{2,80}$/u', $fzOld['name'])) {
+        $fzErrors['name'] = 'Please enter a valid full name (2–80 letters).';
     }
-    if (!preg_match('/^[0-9+\-\s]{10,15}$/', $fzOld['phone'])) {
-        $fzErrors['phone'] = 'Please enter a valid 10-digit phone number.';
+    if (!mrv_is_valid_phone($fzOld['phone'])) {
+        $fzErrors['phone'] = 'Please enter a valid 10-digit mobile number.';
     }
-    if (!filter_var($fzOld['email'], FILTER_VALIDATE_EMAIL)) {
+    if ($fzOld['email'] === '' || mb_strlen($fzOld['email']) > 120 || !filter_var($fzOld['email'], FILTER_VALIDATE_EMAIL)) {
         $fzErrors['email'] = 'Please enter a valid email address.';
     }
     if (!in_array($fzOld['city'], $validCities, true)) {
         $fzErrors['city'] = 'Please select your preferred city.';
     }
+    if (mb_strlen($fzOld['message']) > 1500) {
+        $fzErrors['message'] = 'Message must be 1500 characters or fewer.';
+    }
 
     if (!$fzErrors) {
-        $to      = 'mrvonlinemarketing@gmail.com';
-        $subject = 'New Franchise Application - ' . $fzOld['name'] . ' (' . $fzOld['city'] . ')';
-        $body    = "Name: {$fzOld['name']}\n"
-            . "Phone: {$fzOld['phone']}\n"
-            . "Email: {$fzOld['email']}\n"
-            . "Preferred City: {$fzOld['city']}\n\n"
-            . "Message:\n" . ($fzOld['message'] ?: 'None') . "\n";
-        $headers = "From: no-reply@mrvinternational.in\r\n"
-            . "Reply-To: {$fzOld['email']}\r\n"
-            . "Content-Type: text/plain; charset=UTF-8\r\n";
+        $sentOk = mrv_send_mail(
+            'New Franchise Application - ' . $fzOld['name'] . ' (' . $fzOld['city'] . ')',
+            'New Franchise Partnership Application',
+            [
+                'Full Name'      => $fzOld['name'],
+                'Phone'          => mrv_normalize_phone($fzOld['phone']),
+                'Email'          => $fzOld['email'],
+                'Preferred City' => $fzOld['city'],
+                'Message'        => $fzOld['message'],
+            ],
+            $fzOld['email'],
+            $fzOld['name']
+        );
 
-        if (@mail($to, $subject, $body, $headers)) {
-            header('Location: franchise?applied=1#apply');
+        if ($sentOk) {
+            header('Location: thankyou?type=franchise');
             exit;
         }
         $fzErrors['form'] = 'Sorry, we could not send your application right now. Please call us on +91 9250900572.';
@@ -94,12 +101,6 @@ ob_start();
                         <span class="fz-ribbon">Free Consultation</span>
                         <h2>Apply for Franchise Partnership</h2>
                         <p class="fz-form-sub">Take the first step — our team responds within 24 hours.</p>
-                        <?php if ($fzSent): ?>
-                            <div class="ct-alert ct-alert--ok" role="status">
-                                <i class="bi bi-check-circle-fill" aria-hidden="true"></i>
-                                Thank you! Your franchise application has been received. Our team will contact you within 24 hours.
-                            </div>
-                        <?php endif; ?>
                         <?php if (!empty($fzErrors['form'])): ?>
                             <div class="ct-alert ct-alert--err" role="alert">
                                 <i class="bi bi-exclamation-triangle-fill" aria-hidden="true"></i>
@@ -109,17 +110,17 @@ ob_start();
                         <div class="row g-3">
                             <div class="col-md-6">
                                 <label for="fzName" class="form-label">Full Name <span aria-hidden="true">*</span></label>
-                                <input type="text" class="form-control<?= isset($fzErrors['name']) ? ' is-invalid' : '' ?>" id="fzName" name="name" value="<?= htmlspecialchars($fzOld['name']) ?>" placeholder="Your name" autocomplete="name" required minlength="2">
+                                <input type="text" class="form-control<?= isset($fzErrors['name']) ? ' is-invalid' : '' ?>" id="fzName" name="name" value="<?= htmlspecialchars($fzOld['name']) ?>" placeholder="Your name" autocomplete="name" minlength="2" maxlength="80" required>
                                 <?php if (isset($fzErrors['name'])): ?><small class="ct-error"><?= htmlspecialchars($fzErrors['name']) ?></small><?php endif; ?>
                             </div>
                             <div class="col-md-6">
                                 <label for="fzPhone" class="form-label">Phone <span aria-hidden="true">*</span></label>
-                                <input type="tel" class="form-control<?= isset($fzErrors['phone']) ? ' is-invalid' : '' ?>" id="fzPhone" name="phone" value="<?= htmlspecialchars($fzOld['phone']) ?>" placeholder="Mobile number" autocomplete="tel" inputmode="tel" pattern="[0-9+\-\s]{10,15}" required>
+                                <input type="tel" class="form-control<?= isset($fzErrors['phone']) ? ' is-invalid' : '' ?>" id="fzPhone" name="phone" value="<?= htmlspecialchars($fzOld['phone']) ?>" placeholder="10-digit mobile number" autocomplete="tel" inputmode="tel" pattern="[0-9+\-\s()]{10,16}" required>
                                 <?php if (isset($fzErrors['phone'])): ?><small class="ct-error"><?= htmlspecialchars($fzErrors['phone']) ?></small><?php endif; ?>
                             </div>
                             <div class="col-md-6">
                                 <label for="fzEmail" class="form-label">Email <span aria-hidden="true">*</span></label>
-                                <input type="email" class="form-control<?= isset($fzErrors['email']) ? ' is-invalid' : '' ?>" id="fzEmail" name="email" value="<?= htmlspecialchars($fzOld['email']) ?>" placeholder="Email address" autocomplete="email" required>
+                                <input type="email" class="form-control<?= isset($fzErrors['email']) ? ' is-invalid' : '' ?>" id="fzEmail" name="email" value="<?= htmlspecialchars($fzOld['email']) ?>" placeholder="Email address" autocomplete="email" maxlength="120" required>
                                 <?php if (isset($fzErrors['email'])): ?><small class="ct-error"><?= htmlspecialchars($fzErrors['email']) ?></small><?php endif; ?>
                             </div>
                             <div class="col-md-6">
@@ -134,7 +135,8 @@ ob_start();
                             </div>
                             <div class="col-12">
                                 <label for="fzMsg" class="form-label">Message <small>(optional)</small></label>
-                                <textarea class="form-control" id="fzMsg" name="message" rows="3" placeholder="Tell us about yourself and your interest..."><?= htmlspecialchars($fzOld['message']) ?></textarea>
+                                <textarea class="form-control<?= isset($fzErrors['message']) ? ' is-invalid' : '' ?>" id="fzMsg" name="message" rows="3" maxlength="1500" placeholder="Tell us about yourself and your interest..."><?= htmlspecialchars($fzOld['message']) ?></textarea>
+                                <?php if (isset($fzErrors['message'])): ?><small class="ct-error"><?= htmlspecialchars($fzErrors['message']) ?></small><?php endif; ?>
                             </div>
                             <div class="ct-hp" aria-hidden="true">
                                 <label for="fzWebsite">Website</label>

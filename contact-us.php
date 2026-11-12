@@ -4,51 +4,57 @@ $description = 'Contact MRV International Pre-School & Day Care, 36A Krishna Par
 $keywords = 'Contact MRV International Pre-School, Preschool Admission New Mahavir Nagar, Play School Contact Delhi, Day Care Enquiry New Delhi, Nursery Admission Enquiry';
 $canonical = 'https://mrvinternational.in/contact-us';
 
+require_once __DIR__ . '/mailer.php';
+
 /* ---------- FORM HANDLER ---------- */
 $errors = [];
 $old = ['name' => '', 'phone' => '', 'email' => '', 'program' => '', 'message' => ''];
-$sent = isset($_GET['sent']);
+$validPrograms = ['Playgroup', 'Nursery', 'LKG', 'UKG', 'Day Care'];
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     // Honeypot (bots fill this hidden field)
     if (!empty($_POST['website'])) {
-        header('Location: contact-us?sent=1#contact');
+        header('Location: thankyou?type=contact');
         exit;
     }
 
     foreach ($old as $k => $v) {
-        $old[$k] = trim(strip_tags($_POST[$k] ?? ''));
+        $old[$k] = mrv_clean_input($_POST[$k] ?? '');
     }
 
-    if (mb_strlen($old['name']) < 2) {
-        $errors['name'] = 'Please enter your name.';
+    if (!preg_match('/^[\p{L}\s.\'-]{2,80}$/u', $old['name'])) {
+        $errors['name'] = 'Please enter a valid full name (2–80 letters).';
     }
-    if (!preg_match('/^[0-9+\-\s]{10,15}$/', $old['phone'])) {
-        $errors['phone'] = 'Please enter a valid phone number.';
+    if (!mrv_is_valid_phone($old['phone'])) {
+        $errors['phone'] = 'Please enter a valid 10-digit mobile number.';
     }
-    if ($old['email'] !== '' && !filter_var($old['email'], FILTER_VALIDATE_EMAIL)) {
+    if ($old['email'] !== '' && (mb_strlen($old['email']) > 120 || !filter_var($old['email'], FILTER_VALIDATE_EMAIL))) {
         $errors['email'] = 'Please enter a valid email address.';
     }
-    if (mb_strlen($old['message']) < 5) {
-        $errors['message'] = 'Please write a short message.';
+    if ($old['program'] !== '' && !in_array($old['program'], $validPrograms, true)) {
+        $errors['program'] = 'Please select a valid programme.';
+    }
+    if (mb_strlen($old['message']) < 10 || mb_strlen($old['message']) > 1500) {
+        $errors['message'] = 'Please write a message between 10 and 1500 characters.';
     }
 
     if (!$errors) {
-        $to      = 'mrvonlinemarketing@gmail.com';
-        $subject = 'New Enquiry from Website - ' . $old['name'];
-        $body    = "Name: {$old['name']}\n"
-            . "Phone: {$old['phone']}\n"
-            . "Email: " . ($old['email'] ?: 'Not provided') . "\n"
-            . "Programme: " . ($old['program'] ?: 'Not selected') . "\n\n"
-            . "Message:\n{$old['message']}\n";
-        $headers = "From: no-reply@mrvinternational.in\r\n";
-        if ($old['email'] !== '') {
-            $headers .= "Reply-To: {$old['email']}\r\n";
-        }
-        $headers .= "Content-Type: text/plain; charset=UTF-8\r\n";
+        $sentOk = mrv_send_mail(
+            'New Contact Enquiry - ' . $old['name'],
+            'New Contact Form Enquiry',
+            [
+                'Name'      => $old['name'],
+                'Phone'     => mrv_normalize_phone($old['phone']),
+                'Email'     => $old['email'],
+                'Programme' => $old['program'],
+                'Message'   => $old['message'],
+            ],
+            $old['email'],
+            $old['name']
+        );
 
-        if (@mail($to, $subject, $body, $headers)) {
-            header('Location: contact-us?sent=1#contact');
+        if ($sentOk) {
+            header('Location: thankyou?type=contact');
             exit;
         }
         $errors['form'] = 'Sorry, we could not send your message right now. Please call us on +91 9250900572.';
@@ -177,13 +183,6 @@ ob_start();
                         <h3 class="ct-form-title">Send Us a Message</h3>
                         <p class="ct-form-sub">Fill in the form and we will get back to you soon.</p>
 
-                        <?php if ($sent): ?>
-                            <div class="ct-alert ct-alert--ok" role="status">
-                                <i class="bi bi-check-circle-fill" aria-hidden="true"></i>
-                                Thank you! Your message has been sent. We will contact you shortly.
-                            </div>
-                        <?php endif; ?>
-
                         <?php if (!empty($errors['form'])): ?>
                             <div class="ct-alert ct-alert--err" role="alert">
                                 <i class="bi bi-exclamation-triangle-fill" aria-hidden="true"></i>
@@ -191,44 +190,45 @@ ob_start();
                             </div>
                         <?php endif; ?>
 
-                        <form class="ct-form" method="post" action="contact-us#contact" novalidate>
+                        <form class="ct-form" method="post" action="contact-us#contact">
                             <div class="row g-3">
 
                                 <div class="col-sm-6">
                                     <label for="ctName" class="ct-label">Your Name <span aria-hidden="true">*</span></label>
                                     <input type="text" id="ctName" name="name" class="ct-input<?= isset($errors['name']) ? ' is-invalid' : '' ?>"
-                                        value="<?= htmlspecialchars($old['name']) ?>" placeholder="Parent's name" autocomplete="name" required>
+                                        value="<?= htmlspecialchars($old['name']) ?>" placeholder="Parent's name" autocomplete="name" minlength="2" maxlength="80" required>
                                     <?php if (isset($errors['name'])): ?><small class="ct-error"><?= htmlspecialchars($errors['name']) ?></small><?php endif; ?>
                                 </div>
 
                                 <div class="col-sm-6">
                                     <label for="ctPhone" class="ct-label">Phone Number <span aria-hidden="true">*</span></label>
                                     <input type="tel" id="ctPhone" name="phone" class="ct-input<?= isset($errors['phone']) ? ' is-invalid' : '' ?>"
-                                        value="<?= htmlspecialchars($old['phone']) ?>" placeholder="10-digit mobile number" autocomplete="tel" inputmode="tel" required>
+                                        value="<?= htmlspecialchars($old['phone']) ?>" placeholder="10-digit mobile number" autocomplete="tel" inputmode="tel" pattern="[0-9+\-\s()]{10,16}" required>
                                     <?php if (isset($errors['phone'])): ?><small class="ct-error"><?= htmlspecialchars($errors['phone']) ?></small><?php endif; ?>
                                 </div>
 
                                 <div class="col-sm-6">
                                     <label for="ctEmail" class="ct-label">Email (optional)</label>
                                     <input type="email" id="ctEmail" name="email" class="ct-input<?= isset($errors['email']) ? ' is-invalid' : '' ?>"
-                                        value="<?= htmlspecialchars($old['email']) ?>" placeholder="you@example.com" autocomplete="email">
+                                        value="<?= htmlspecialchars($old['email']) ?>" placeholder="you@example.com" autocomplete="email" maxlength="120">
                                     <?php if (isset($errors['email'])): ?><small class="ct-error"><?= htmlspecialchars($errors['email']) ?></small><?php endif; ?>
                                 </div>
 
                                 <div class="col-sm-6">
                                     <label for="ctProgram" class="ct-label">Programme</label>
-                                    <select id="ctProgram" name="program" class="ct-input">
+                                    <select id="ctProgram" name="program" class="ct-input<?= isset($errors['program']) ? ' is-invalid' : '' ?>">
                                         <option value="">Select a programme</option>
-                                        <?php foreach (['Playgroup', 'Nursery', 'LKG', 'UKG', 'Day Care'] as $p): ?>
+                                        <?php foreach ($validPrograms as $p): ?>
                                             <option value="<?= $p ?>" <?= $old['program'] === $p ? 'selected' : '' ?>><?= $p ?></option>
                                         <?php endforeach; ?>
                                     </select>
+                                    <?php if (isset($errors['program'])): ?><small class="ct-error"><?= htmlspecialchars($errors['program']) ?></small><?php endif; ?>
                                 </div>
 
                                 <div class="col-12">
                                     <label for="ctMessage" class="ct-label">Message <span aria-hidden="true">*</span></label>
                                     <textarea id="ctMessage" name="message" rows="5" class="ct-input<?= isset($errors['message']) ? ' is-invalid' : '' ?>"
-                                        placeholder="Tell us about your child's age and what you would like to know" required><?= htmlspecialchars($old['message']) ?></textarea>
+                                        placeholder="Tell us about your child's age and what you would like to know" minlength="10" maxlength="1500" required><?= htmlspecialchars($old['message']) ?></textarea>
                                     <?php if (isset($errors['message'])): ?><small class="ct-error"><?= htmlspecialchars($errors['message']) ?></small><?php endif; ?>
                                 </div>
 

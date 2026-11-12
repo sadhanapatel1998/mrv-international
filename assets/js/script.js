@@ -117,4 +117,35 @@ document.addEventListener("DOMContentLoaded", () => {
       }),
     );
   }
+
+  // Form submit loading state (prevents double-submit and shows spinner)
+  document.querySelectorAll("#enqForm, .ct-form, #fzForm").forEach((form) => {
+    const btn = form.querySelector('button[type="submit"]');
+    if (!btn) return;
+    if (!btn.dataset.originalHtml) btn.dataset.originalHtml = btn.innerHTML;
+
+    form.addEventListener("submit", (e) => {
+      if (btn.disabled) {
+        e.preventDefault();
+        return;
+      }
+      btn.disabled = true;
+      btn.setAttribute("aria-busy", "true");
+      btn.innerHTML =
+        '<span class="spinner-border spinner-border-sm me-2" aria-hidden="true"></span>Sending...';
+    });
+  });
+
+  // Restore submit buttons if user navigates back from bfcache
+  window.addEventListener("pageshow", () => {
+    document
+      .querySelectorAll('#enqForm button[type="submit"], .ct-form button[type="submit"], #fzForm button[type="submit"]')
+      .forEach((btn) => {
+        if (btn.dataset.originalHtml) {
+          btn.disabled = false;
+          btn.removeAttribute("aria-busy");
+          btn.innerHTML = btn.dataset.originalHtml;
+        }
+      });
+  });
 });
