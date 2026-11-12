@@ -1,8 +1,8 @@
 <?php
-$title = 'Preschool & Day Care in New Mahavir Nagar | MRV International';
-$description = 'MRV International Pre-School & Day Care, New Mahavir Nagar, Delhi. Playgroup, Nursery, LKG, UKG & safe day care. Admissions open – call 9250900572.';
-$keywords = 'MRV International Pre-School, Preschool in New Mahavir Nagar, Play School in New Delhi, Nursery Admission Delhi, Day Care Centre in New Delhi';
-$canonical = 'https://mrvinternational.in/';
+$title = 'Programs | MRV International Pre-School & Day Care, New Delhi';
+$description = 'Explore MRV International Pre-School & Day Care programs in New Mahavir Nagar, Delhi: Toddler, Pre-Nursery, Nursery, Kindergarten, Day Care and After School.';
+$keywords = 'MRV International Programs, Toddler Program Delhi, Pre-Nursery Delhi, Nursery School Delhi, Kindergarten Delhi, Day Care New Mahavir Nagar';
+$canonical = 'https://mrvinternational.in/programs';
 ob_start();
 ?>
 
@@ -15,8 +15,8 @@ ob_start();
             <p class="pb-text">India's first Multiple Intelligence-based preschool — crafting milestones of success since 1972.</p>
             <nav aria-label="Breadcrumb">
                 <ol class="pb-crumb">
-                    <li><a href="/"><i class="bi bi-house-heart-fill" aria-hidden="true"></i>Home</a></li>
-                    <li aria-current="page">About</li>
+                    <li><a href="./"><i class="bi bi-house-heart-fill" aria-hidden="true"></i>Home</a></li>
+                    <li aria-current="page">Programs</li>
                 </ol>
             </nav>
         </div>
@@ -83,7 +83,7 @@ ob_start();
                         <div class="svc-body">
                             <h3>Toddler</h3>
                             <p>Nurturing attachment, sensory play, and gross motor coordination.</p>
-                            <a class="svc-link" href="toddler.php">Learn more<span class="visually-hidden"> about Toddler</span><i class="bi bi-arrow-right"></i></a>
+                            <a class="svc-link" href="toddler">Learn more<span class="visually-hidden"> about Toddler</span><i class="bi bi-arrow-right"></i></a>
                         </div>
                     </article>
                 </div>
@@ -98,7 +98,7 @@ ob_start();
                         <div class="svc-body">
                             <h3>Pre-Nursery</h3>
                             <p>Self-control, hands-on activities, music, movement, and social rituals.</p>
-                            <a class="svc-link" href="pre-nursery.php">Learn more<span class="visually-hidden"> about Pre-Nursery</span><i class="bi bi-arrow-right"></i></a>
+                            <a class="svc-link" href="pre-nursery">Learn more<span class="visually-hidden"> about Pre-Nursery</span><i class="bi bi-arrow-right"></i></a>
                         </div>
                     </article>
                 </div>
@@ -113,7 +113,7 @@ ob_start();
                         <div class="svc-body">
                             <h3>Nursery</h3>
                             <p>Letters, sounds, confidence building, and independent expression.</p>
-                            <a class="svc-link" href="nursery.php">Learn more<span class="visually-hidden"> about Nursery</span><i class="bi bi-arrow-right"></i></a>
+                            <a class="svc-link" href="nursery">Learn more<span class="visually-hidden"> about Nursery</span><i class="bi bi-arrow-right"></i></a>
                         </div>
                     </article>
                 </div>
@@ -128,7 +128,7 @@ ob_start();
                         <div class="svc-body">
                             <h3>Kindergarten</h3>
                             <p>Phonetics, writing strokes, and preparation for formal schooling.</p>
-                            <a class="svc-link" href="kindergarten.php">Learn more<span class="visually-hidden"> about Kindergarten</span><i class="bi bi-arrow-right"></i></a>
+                            <a class="svc-link" href="kindergarten">Learn more<span class="visually-hidden"> about Kindergarten</span><i class="bi bi-arrow-right"></i></a>
                         </div>
                     </article>
                 </div>
@@ -143,7 +143,7 @@ ob_start();
                         <div class="svc-body">
                             <h3>Day Care</h3>
                             <p>Creative play, reading sessions, and a safe space while parents work.</p>
-                            <a class="svc-link" href="daycare.php">Learn more<span class="visually-hidden"> about Day Care</span><i class="bi bi-arrow-right"></i></a>
+                            <a class="svc-link" href="day-care">Learn more<span class="visually-hidden"> about Day Care</span><i class="bi bi-arrow-right"></i></a>
                         </div>
                     </article>
                 </div>
@@ -158,7 +158,7 @@ ob_start();
                         <div class="svc-body">
                             <h3>After School</h3>
                             <p>Drawing, Jolly Phonics, storytelling, music, and brain development.</p>
-                            <a class="svc-link" href="after-school.php">Learn more<span class="visually-hidden"> about After School</span><i class="bi bi-arrow-right"></i></a>
+                            <a class="svc-link" href="after-school">Learn more<span class="visually-hidden"> about After School</span><i class="bi bi-arrow-right"></i></a>
                         </div>
                     </article>
                 </div>

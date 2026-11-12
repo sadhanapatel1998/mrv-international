@@ -3,6 +3,61 @@ $title = 'Preschool & Day Care in New Mahavir Nagar | MRV International';
 $description = 'MRV International Pre-School & Day Care, New Mahavir Nagar, Delhi. Playgroup, Nursery, LKG, UKG & safe day care. Admissions open – call 9250900572.';
 $keywords = 'MRV International Pre-School, Preschool in New Mahavir Nagar, Play School in New Delhi, Nursery Admission Delhi, Day Care Centre in New Delhi';
 $canonical = 'https://mrvinternational.in/';
+
+/* ---------- ADMISSION ENQUIRY HANDLER ---------- */
+$enqErrors = [];
+$enqOld = ['child_name' => '', 'parent_name' => '', 'email' => '', 'phone' => '', 'branch' => ''];
+$enqSent = isset($_GET['enq']);
+$validBranches = ['Vikaspuri', 'Tagore Garden', 'Janakpuri', 'Tilak Nagar', 'Krishna Park'];
+
+if ($_SERVER['REQUEST_METHOD'] === 'POST' && ($_POST['form_type'] ?? '') === 'admission_enquiry') {
+    if (!empty($_POST['website'])) {
+        header('Location: ./?enq=1#contact');
+        exit;
+    }
+
+    foreach ($enqOld as $k => $v) {
+        $enqOld[$k] = trim(strip_tags($_POST[$k] ?? ''));
+    }
+
+    if (mb_strlen($enqOld['child_name']) < 2) {
+        $enqErrors['child_name'] = "Please enter your child's name.";
+    }
+    if (mb_strlen($enqOld['parent_name']) < 2) {
+        $enqErrors['parent_name'] = "Please enter parent's name.";
+    }
+    if ($enqOld['email'] !== '' && !filter_var($enqOld['email'], FILTER_VALIDATE_EMAIL)) {
+        $enqErrors['email'] = 'Please enter a valid email address.';
+    }
+    if (!preg_match('/^[0-9+\-\s]{10,15}$/', $enqOld['phone'])) {
+        $enqErrors['phone'] = 'Please enter a valid 10-digit phone number.';
+    }
+    if (!in_array($enqOld['branch'], $validBranches, true)) {
+        $enqErrors['branch'] = 'Please select a branch.';
+    }
+
+    if (!$enqErrors) {
+        $to      = 'mrvonlinemarketing@gmail.com';
+        $subject = 'New Admission Enquiry - ' . $enqOld['child_name'] . ' (' . $enqOld['branch'] . ')';
+        $body    = "Child Name: {$enqOld['child_name']}\n"
+            . "Parent Name: {$enqOld['parent_name']}\n"
+            . "Phone: {$enqOld['phone']}\n"
+            . "Email: " . ($enqOld['email'] ?: 'Not provided') . "\n"
+            . "Branch: {$enqOld['branch']}\n";
+        $headers = "From: no-reply@mrvinternational.in\r\n";
+        if ($enqOld['email'] !== '') {
+            $headers .= "Reply-To: {$enqOld['email']}\r\n";
+        }
+        $headers .= "Content-Type: text/plain; charset=UTF-8\r\n";
+
+        if (@mail($to, $subject, $body, $headers)) {
+            header('Location: ./?enq=1#contact');
+            exit;
+        }
+        $enqErrors['form'] = 'Sorry, we could not send your enquiry right now. Please call us on +91 9250900572.';
+    }
+}
+
 ob_start();
 ?>
 
@@ -128,7 +183,7 @@ ob_start();
                         <div class="svc-body">
                             <h3>Toddler</h3>
                             <p>Nurturing attachment, sensory play, and gross motor coordination.</p>
-                            <a class="svc-link" href="toddler.php">Learn more<span class="visually-hidden"> about Toddler</span><i class="bi bi-arrow-right"></i></a>
+                            <a class="svc-link" href="toddler">Learn more<span class="visually-hidden"> about Toddler</span><i class="bi bi-arrow-right"></i></a>
                         </div>
                     </article>
                 </div>
@@ -143,7 +198,7 @@ ob_start();
                         <div class="svc-body">
                             <h3>Pre-Nursery</h3>
                             <p>Self-control, hands-on activities, music, movement, and social rituals.</p>
-                            <a class="svc-link" href="pre-nursery.php">Learn more<span class="visually-hidden"> about Pre-Nursery</span><i class="bi bi-arrow-right"></i></a>
+                            <a class="svc-link" href="pre-nursery">Learn more<span class="visually-hidden"> about Pre-Nursery</span><i class="bi bi-arrow-right"></i></a>
                         </div>
                     </article>
                 </div>
@@ -158,7 +213,7 @@ ob_start();
                         <div class="svc-body">
                             <h3>Nursery</h3>
                             <p>Letters, sounds, confidence building, and independent expression.</p>
-                            <a class="svc-link" href="nursery.php">Learn more<span class="visually-hidden"> about Nursery</span><i class="bi bi-arrow-right"></i></a>
+                            <a class="svc-link" href="nursery">Learn more<span class="visually-hidden"> about Nursery</span><i class="bi bi-arrow-right"></i></a>
                         </div>
                     </article>
                 </div>
@@ -173,7 +228,7 @@ ob_start();
                         <div class="svc-body">
                             <h3>Kindergarten</h3>
                             <p>Phonetics, writing strokes, and preparation for formal schooling.</p>
-                            <a class="svc-link" href="kindergarten.php">Learn more<span class="visually-hidden"> about Kindergarten</span><i class="bi bi-arrow-right"></i></a>
+                            <a class="svc-link" href="kindergarten">Learn more<span class="visually-hidden"> about Kindergarten</span><i class="bi bi-arrow-right"></i></a>
                         </div>
                     </article>
                 </div>
@@ -188,7 +243,7 @@ ob_start();
                         <div class="svc-body">
                             <h3>Day Care</h3>
                             <p>Creative play, reading sessions, and a safe space while parents work.</p>
-                            <a class="svc-link" href="daycare.php">Learn more<span class="visually-hidden"> about Day Care</span><i class="bi bi-arrow-right"></i></a>
+                            <a class="svc-link" href="day-care">Learn more<span class="visually-hidden"> about Day Care</span><i class="bi bi-arrow-right"></i></a>
                         </div>
                     </article>
                 </div>
@@ -203,7 +258,7 @@ ob_start();
                         <div class="svc-body">
                             <h3>After School</h3>
                             <p>Drawing, Jolly Phonics, storytelling, music, and brain development.</p>
-                            <a class="svc-link" href="after-school.php">Learn more<span class="visually-hidden"> about After School</span><i class="bi bi-arrow-right"></i></a>
+                            <a class="svc-link" href="after-school">Learn more<span class="visually-hidden"> about After School</span><i class="bi bi-arrow-right"></i></a>
                         </div>
                     </article>
                 </div>
@@ -333,14 +388,14 @@ ob_start();
                             <span class="fac-icon"><i class="bi bi-telephone-fill"></i></span>
                             <div>
                                 <h3>Call Us</h3>
-                                <p><a href="tel:+919250900571">+91 9250900571</a> · <a href="tel:+919971140571">+91 9971140571</a></p>
+                                <p><a href="tel:+919250900572">+91 9250900572</a> · <a href="tel:+919250900573">+91 9250900573</a></p>
                             </div>
                         </li>
                         <li class="fac-item t-blue">
                             <span class="fac-icon"><i class="bi bi-geo-alt-fill"></i></span>
                             <div>
                                 <h3>Vikaspuri Centre</h3>
-                                <p><a href="https://www.google.com/maps/search/?api=1&amp;query=H-368+Vikaspuri+Near+Mamta+Modern+School+New+Delhi" target="_blank" rel="noopener">H-368, Vikaspuri, Near Mamta Modern School, New Delhi</a></p>
+                                <p><a href="https://maps.app.goo.gl/iNbpjZG4gXoNg5W27" target="_blank" rel="noopener">WZ 36A, Krishna Park, New Mahavir Nagar, New Delhi - 110018</a></p>
                             </div>
                         </li>
                         <li class="fac-item t-yellow">
@@ -354,35 +409,55 @@ ob_start();
                 </div>
 
                 <div class="col-lg-6">
-                    <form class="enq" id="enqForm" action="#" method="post">
+                    <form class="enq" id="enqForm" action="./#contact" method="post">
+                        <input type="hidden" name="form_type" value="admission_enquiry">
                         <h3>Admission Enquiry</h3>
+                        <?php if ($enqSent): ?>
+                            <div class="ct-alert ct-alert--ok" role="status">
+                                <i class="bi bi-check-circle-fill" aria-hidden="true"></i>
+                                Thank you! Your admission enquiry has been submitted. Our team will contact you shortly.
+                            </div>
+                        <?php endif; ?>
+                        <?php if (!empty($enqErrors['form'])): ?>
+                            <div class="ct-alert ct-alert--err" role="alert">
+                                <i class="bi bi-exclamation-triangle-fill" aria-hidden="true"></i>
+                                <?= htmlspecialchars($enqErrors['form']) ?>
+                            </div>
+                        <?php endif; ?>
                         <div class="row g-3">
                             <div class="col-md-6">
-                                <label for="childName" class="form-label">Child Name</label>
-                                <input type="text" class="form-control" id="childName" name="child_name" autocomplete="off" required>
+                                <label for="childName" class="form-label">Child Name <span aria-hidden="true">*</span></label>
+                                <input type="text" class="form-control<?= isset($enqErrors['child_name']) ? ' is-invalid' : '' ?>" id="childName" name="child_name" value="<?= htmlspecialchars($enqOld['child_name']) ?>" autocomplete="off" required minlength="2">
+                                <?php if (isset($enqErrors['child_name'])): ?><small class="ct-error"><?= htmlspecialchars($enqErrors['child_name']) ?></small><?php endif; ?>
                             </div>
                             <div class="col-md-6">
-                                <label for="parentName" class="form-label">Parent Name</label>
-                                <input type="text" class="form-control" id="parentName" name="parent_name" autocomplete="name" required>
+                                <label for="parentName" class="form-label">Parent Name <span aria-hidden="true">*</span></label>
+                                <input type="text" class="form-control<?= isset($enqErrors['parent_name']) ? ' is-invalid' : '' ?>" id="parentName" name="parent_name" value="<?= htmlspecialchars($enqOld['parent_name']) ?>" autocomplete="name" required minlength="2">
+                                <?php if (isset($enqErrors['parent_name'])): ?><small class="ct-error"><?= htmlspecialchars($enqErrors['parent_name']) ?></small><?php endif; ?>
                             </div>
                             <div class="col-md-6">
                                 <label for="enqEmail" class="form-label">Email</label>
-                                <input type="email" class="form-control" id="enqEmail" name="email" autocomplete="email">
+                                <input type="email" class="form-control<?= isset($enqErrors['email']) ? ' is-invalid' : '' ?>" id="enqEmail" name="email" value="<?= htmlspecialchars($enqOld['email']) ?>" autocomplete="email">
+                                <?php if (isset($enqErrors['email'])): ?><small class="ct-error"><?= htmlspecialchars($enqErrors['email']) ?></small><?php endif; ?>
                             </div>
                             <div class="col-md-6">
-                                <label for="enqPhone" class="form-label">Phone</label>
-                                <input type="tel" class="form-control" id="enqPhone" name="phone" autocomplete="tel" required>
+                                <label for="enqPhone" class="form-label">Phone <span aria-hidden="true">*</span></label>
+                                <input type="tel" class="form-control<?= isset($enqErrors['phone']) ? ' is-invalid' : '' ?>" id="enqPhone" name="phone" value="<?= htmlspecialchars($enqOld['phone']) ?>" autocomplete="tel" inputmode="tel" pattern="[0-9+\-\s]{10,15}" required>
+                                <?php if (isset($enqErrors['phone'])): ?><small class="ct-error"><?= htmlspecialchars($enqErrors['phone']) ?></small><?php endif; ?>
                             </div>
                             <div class="col-12">
-                                <label for="enqBranch" class="form-label">Branch</label>
-                                <select class="form-select" id="enqBranch" name="branch" required>
-                                    <option value="" selected disabled>Select branch</option>
-                                    <option>Vikaspuri</option>
-                                    <option>Tagore Garden</option>
-                                    <option>Janakpuri</option>
-                                    <option>Tilak Nagar</option>
-                                    <option>Krishna Park</option>
+                                <label for="enqBranch" class="form-label">Branch <span aria-hidden="true">*</span></label>
+                                <select class="form-select<?= isset($enqErrors['branch']) ? ' is-invalid' : '' ?>" id="enqBranch" name="branch" required>
+                                    <option value="" <?= $enqOld['branch'] === '' ? 'selected' : '' ?> disabled>Select branch</option>
+                                    <?php foreach ($validBranches as $b): ?>
+                                        <option value="<?= htmlspecialchars($b) ?>" <?= $enqOld['branch'] === $b ? 'selected' : '' ?>><?= htmlspecialchars($b) ?></option>
+                                    <?php endforeach; ?>
                                 </select>
+                                <?php if (isset($enqErrors['branch'])): ?><small class="ct-error"><?= htmlspecialchars($enqErrors['branch']) ?></small><?php endif; ?>
+                            </div>
+                            <div class="ct-hp" aria-hidden="true">
+                                <label for="enqWebsite">Website</label>
+                                <input type="text" id="enqWebsite" name="website" tabindex="-1" autocomplete="off">
                             </div>
                             <div class="col-12">
                                 <button type="submit" class="btn btn-sgs btn-lg">Submit Enquiry</button>
@@ -404,7 +479,7 @@ ob_start();
                 "description": "India's first Multiple Intelligence-based preschool since 1972, offering Toddler, Pre-Nursery, Nursery, Kindergarten, Day Care and After School programs in Delhi.",
                 "image": "https://mrvinternational.in/assets/images/banner/banner03.webp",
                 "foundingDate": "1972",
-                "telephone": ["+919250900571", "+919971140571"],
+                "telephone": ["+919250900572", "+919250900573"],
                 "email": "info@mrvinternational.in",
                 "address": {
                     "@type": "PostalAddress",

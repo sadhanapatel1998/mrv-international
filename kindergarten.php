@@ -16,7 +16,7 @@ ob_start();
 
             <nav aria-label="Breadcrumb">
                 <ol class="pb-crumb">
-                    <li><a href="/"><i class="bi bi-house-heart-fill" aria-hidden="true"></i>Home</a></li>
+                    <li><a href="./"><i class="bi bi-house-heart-fill" aria-hidden="true"></i>Home</a></li>
                     <li aria-current="page">Kindergarten Programme</li>
                 </ol>
             </nav>
@@ -256,7 +256,7 @@ ob_start();
             </h2>
 
             <div class="prog-links">
-                <a href="toddler-programme" class="prog-link pl--red">
+                <a href="toddler" class="prog-link pl--red">
                     <i class="bi bi-balloon-heart" aria-hidden="true"></i>
                     <span><strong>Toddler Programme</strong><small>15 – 24 months</small></span>
                     <i class="bi bi-arrow-right pl-arrow" aria-hidden="true"></i>
@@ -319,7 +319,7 @@ ob_start();
                             "@type": "ListItem",
                             "position": 2,
                             "name": "Our Programs",
-                            "item": "https://mrvinternational.in/#services"
+                            "item": "https://mrvinternational.in/programs"
                         },
                         {
                             "@type": "ListItem",

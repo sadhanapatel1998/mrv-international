@@ -12,7 +12,7 @@ $sent = isset($_GET['sent']);
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     // Honeypot (bots fill this hidden field)
     if (!empty($_POST['website'])) {
-        header('Location: /contact-us?sent=1');
+        header('Location: contact-us?sent=1#contact');
         exit;
     }
 
@@ -48,7 +48,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $headers .= "Content-Type: text/plain; charset=UTF-8\r\n";
 
         if (@mail($to, $subject, $body, $headers)) {
-            header('Location: /contact-us?sent=1');
+            header('Location: contact-us?sent=1#contact');
             exit;
         }
         $errors['form'] = 'Sorry, we could not send your message right now. Please call us on +91 9250900572.';
@@ -58,8 +58,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 $mapQuery = '36A+Krishna+Park+Extension+New+Mahavir+Nagar+New+Delhi+110018';
 ob_start();
 ?>
-
-<link rel="stylesheet" href="assets/css/contact.css">
 
 <main id="main">
 
@@ -71,7 +69,7 @@ ob_start();
 
             <nav aria-label="Breadcrumb">
                 <ol class="pb-crumb">
-                    <li><a href="/"><i class="bi bi-house-heart-fill" aria-hidden="true"></i>Home</a></li>
+                    <li><a href="./"><i class="bi bi-house-heart-fill" aria-hidden="true"></i>Home</a></li>
                     <li aria-current="page">Contact Us</li>
                 </ol>
             </nav>
@@ -158,7 +156,7 @@ ob_start();
                         <span class="ct-icon"><i class="bi bi-geo-alt-fill" aria-hidden="true"></i></span>
                         <h3>Visit Us</h3>
                         <address>
-                            <a href="https://www.google.com/maps/search/?api=1&amp;query=<?= $mapQuery ?>" target="_blank" rel="noopener">H-368, Vikaspuri, Near Mamta Modern School, New Delhi</a>
+                            <a href="https://www.google.com/maps/search/?api=1&amp;query=<?= $mapQuery ?>" target="_blank" rel="noopener">WZ 36A, Krishna Park, New Mahavir Nagar, New Delhi - 110018</a>
                         </address>
                     </article>
                 </div>
@@ -193,7 +191,7 @@ ob_start();
                             </div>
                         <?php endif; ?>
 
-                        <form class="ct-form" method="post" action="/contact-us#contact" novalidate>
+                        <form class="ct-form" method="post" action="contact-us#contact" novalidate>
                             <div class="row g-3">
 
                                 <div class="col-sm-6">

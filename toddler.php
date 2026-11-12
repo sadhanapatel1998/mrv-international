@@ -2,7 +2,7 @@
 $title = 'Toddler Programme (15–24 Months) in New Delhi | MRV International';
 $description = 'Toddler Programme for 15 to 24 months at MRV International Pre-School, New Mahavir Nagar, Delhi. Secure attachment, sensory play, motor skills. Call 9250900572.';
 $keywords = 'Toddler programme Delhi, Toddler class New Mahavir Nagar, Preschool for 15 months, Early learning for toddlers, Sensory play for toddlers, MRV International Pre-School';
-$canonical = 'https://mrvinternational.in/toddler-programme';
+$canonical = 'https://mrvinternational.in/toddler';
 ob_start();
 ?>
 
@@ -16,7 +16,7 @@ ob_start();
 
             <nav aria-label="Breadcrumb">
                 <ol class="pb-crumb">
-                    <li><a href="/"><i class="bi bi-house-heart-fill" aria-hidden="true"></i>Home</a></li>
+                    <li><a href="./"><i class="bi bi-house-heart-fill" aria-hidden="true"></i>Home</a></li>
                     <li aria-current="page">Toddler Programme</li>
                 </ol>
             </nav>
@@ -267,9 +267,9 @@ ob_start();
             </h2>
 
             <div class="prog-links">
-                <a href="playgroup" class="prog-link pl--red">
-                    <i class="bi bi-balloon-heart" aria-hidden="true"></i>
-                    <span><strong>Playgroup</strong><small>1.5 – 2.5 yrs</small></span>
+                <a href="pre-nursery" class="prog-link pl--red">
+                    <i class="bi bi-puzzle" aria-hidden="true"></i>
+                    <span><strong>Pre-Nursery</strong><small>2 – 3 yrs</small></span>
                     <i class="bi bi-arrow-right pl-arrow" aria-hidden="true"></i>
                 </a>
 
@@ -330,13 +330,13 @@ ob_start();
                             "@type": "ListItem",
                             "position": 2,
                             "name": "Our Programs",
-                            "item": "https://mrvinternational.in/#services"
+                            "item": "https://mrvinternational.in/programs"
                         },
                         {
                             "@type": "ListItem",
                             "position": 3,
                             "name": "Toddler Programme",
-                            "item": "https://mrvinternational.in/toddler-programme"
+                            "item": "https://mrvinternational.in/toddler"
                         }
                     ]
                 },
@@ -345,7 +345,7 @@ ob_start();
                     "name": "Toddler Programme",
                     "serviceType": "Early childhood toddler programme",
                     "description": "Toddler Programme for children aged 15 to 24 months at MRV International Pre-School & Day Care, New Mahavir Nagar, New Delhi, focusing on attachment and security, sounds and early words, sensory discovery through arts and crafts, gross motor coordination and eating together.",
-                    "url": "https://mrvinternational.in/toddler-programme",
+                    "url": "https://mrvinternational.in/toddler",
                     "areaServed": "New Mahavir Nagar, New Delhi",
                     "audience": {
                         "@type": "PeopleAudience",

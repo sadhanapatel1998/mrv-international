@@ -171,7 +171,7 @@ textarea.ct-input {
 .ct-error {
     display: block;
     margin-top: .3rem;
-    color: var(--ct-red);
+    color: var(--ct-red, #e3242b);
     font-size: .85rem;
 }
 

@@ -5,12 +5,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
     <title><?= htmlspecialchars($title ?? 'MRV International Pre-School & Day Care | New Mahavir Nagar, Delhi') ?></title>
     <meta name="description" content="<?= htmlspecialchars($description ?? 'MRV International Pre-School & Day Care in New Mahavir Nagar, New Delhi, offers Playgroup, Nursery, LKG, UKG and safe day care facilities. Admissions Open. Call 9250900572.') ?>">
     <meta name="keywords" content="<?= htmlspecialchars($keywords ?? 'MRV International Pre-School, MRV Day Care, Preschool in New Mahavir Nagar, Play School in New Delhi, Nursery Admission Delhi, Playgroup, LKG, UKG, Day Care Centre in New Mahavir Nagar, Preschool Admission Delhi') ?>">
     <meta name="robots" content="index, follow, max-image-preview:large">
-    <link rel="canonical" href="<?= htmlspecialchars((isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off' ? 'https' : 'http') . '://' . $_SERVER['HTTP_HOST'] . strtok($_SERVER['REQUEST_URI'], '?')) ?>">
+    <?php
+    $resolvedCanonical = $canonical ?? ((isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off' ? 'https' : 'http') . '://' . ($_SERVER['HTTP_HOST'] ?? 'mrvinternational.in') . strtok($_SERVER['REQUEST_URI'] ?? '/', '?'));
+    ?>
+    <link rel="canonical" href="<?= htmlspecialchars($resolvedCanonical) ?>">
     <meta name="author" content="Hover Business Services LLP">
     <meta name="theme-color" content="#e3242b">
     <link rel="icon" type="image/png" href="assets/images/logo.png">
@@ -20,7 +22,7 @@
     <meta property="og:site_name" content="MRV International Pre-School &amp; Day Care">
     <meta property="og:title" content="<?= htmlspecialchars($title ?? 'MRV International Pre-School & Day Care | New Mahavir Nagar, Delhi') ?>">
     <meta property="og:description" content="<?= htmlspecialchars($description ?? 'Pre-school and day care in New Mahavir Nagar, New Delhi. Playgroup to UKG. Admissions Open.') ?>">
-    <meta property="og:url" content="<?= htmlspecialchars((isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off' ? 'https' : 'http') . '://' . $_SERVER['HTTP_HOST'] . strtok($_SERVER['REQUEST_URI'], '?')) ?>">
+    <meta property="og:url" content="<?= htmlspecialchars($resolvedCanonical) ?>">
     <meta property="og:image" content="assets/images/logo.png">
     <meta property="og:locale" content="en_IN">
 
@@ -45,12 +47,12 @@
             "@context": "https://schema.org",
             "@type": ["Preschool", "ChildCare"],
             "name": "MRV International Pre-School & Day Care",
-            "url": "https://www.your-domain.com/",
-            "logo": "https://www.your-domain.com/assets/images/logo.png",
-            "image": "https://www.your-domain.com/assets/images/og-image.jpg",
+            "url": "https://mrvinternational.in/",
+            "logo": "https://mrvinternational.in/assets/images/logo.png",
+            "image": "https://mrvinternational.in/assets/images/logo.png",
             "description": "Pre-school and day care in New Mahavir Nagar, New Delhi offering Playgroup, Nursery, LKG, UKG and full-day child care.",
-            "telephone": ["+919250900572", "+919250900573"],
-            "email": "mrvonlinemarketing@gmail.com",
+            "telephone": ["+919250900572", "+919250900572"],
+            "email": "info@mrvinternational.in",
             "address": {
                 "@type": "PostalAddress",
                 "streetAddress": "36A, Krishna Park Extn, New Mahavir Nagar",

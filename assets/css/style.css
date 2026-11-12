@@ -18,14 +18,15 @@
 }
 
 html {
-    scroll-behavior: smooth
+    scroll-behavior: smooth;
+    overflow-x: clip
 }
 
 body {
     font-family: 'Poppins', sans-serif;
     color: var(--ink);
     margin: 0;
-    overflow-x: hidden
+    overflow-x: clip
 }
 
 :focus-visible {
@@ -167,6 +168,48 @@ body {
     color: var(--blue)
 }
 
+.navbar-nav .dropdown-menu {
+    border: 2px solid #e3ecf5;
+    border-radius: 16px;
+    padding: .5rem;
+    box-shadow: 0 14px 32px rgba(10, 37, 64, .14);
+    margin-top: .25rem
+}
+
+.navbar-nav .dropdown-item {
+    border-radius: 10px;
+    padding: .5rem .9rem;
+    font-weight: 500;
+    font-size: .9rem;
+    color: var(--ink)
+}
+
+.navbar-nav .dropdown-item:hover,
+.navbar-nav .dropdown-item:focus-visible {
+    background: var(--soft);
+    color: var(--blue-dark)
+}
+
+.navbar-nav .dropdown-item.active,
+.navbar-nav .dropdown-item:active {
+    background: var(--red);
+    color: #fff
+}
+
+@media(min-width:1200px) {
+    .nav-link,
+    .nav-cta .btn {
+        white-space: nowrap
+    }
+}
+
+@media(min-width:1200px) and (hover:hover) {
+    .navbar-nav .dropdown:hover>.dropdown-menu {
+        display: block;
+        margin-top: 0
+    }
+}
+
 .nav-cta {
     display: flex;
     align-items: center;
@@ -277,15 +320,31 @@ body {
 @media(max-width:575.98px) {
     .topbar {
         font-size: .8rem;
-        padding: .45rem 0
+        padding: .45rem 0;
+        max-height: none
     }
 
     .topbar-links {
-        gap: .8rem
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: .35rem .8rem
     }
 
     .navbar-brand img {
-        height: 46px
+        height: 46px;
+        max-width: 155px;
+        object-fit: contain
+    }
+}
+
+@media(max-width:420px) {
+    .topbar {
+        font-size: .7rem;
+    }
+}
+@media(max-width:360px) {
+    .topbar {
+        font-size: .6rem;
     }
 }
 
@@ -765,11 +824,11 @@ body {
     }
 
     .chip--yellow {
-        left: -10%
+        left: 0
     }
 
     .chip--white {
-        left: -8%
+        left: 0
     }
 
     .hero-actions .btn {
@@ -2509,4 +2568,37 @@ body {
     .ft-links a:hover {
         transform: none
     }
+}
+
+.to-top {
+    position: fixed;
+    right: 1.25rem;
+    bottom: 1.25rem;
+    z-index: 1020;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 46px;
+    height: 46px;
+    border: 0;
+    border-radius: 50%;
+    background: var(--red);
+    color: #fff;
+    font-size: 1.2rem;
+    box-shadow: 0 6px 18px rgba(10, 37, 64, .22);
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(12px);
+    transition: opacity .25s, visibility .25s, transform .25s, background .2s
+}
+
+.to-top.is-visible {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0)
+}
+
+.to-top:hover,
+.to-top:focus-visible {
+    background: var(--blue-dark)
 }

@@ -16,7 +16,7 @@ ob_start();
             <p class="pb-text">India's first Multiple Intelligence-based preschool — crafting milestones of success since 1972.</p>
             <nav aria-label="Breadcrumb">
                 <ol class="pb-crumb">
-                    <li><a href="/"><i class="bi bi-house-heart-fill" aria-hidden="true"></i>Home</a></li>
+                    <li><a href="./"><i class="bi bi-house-heart-fill" aria-hidden="true"></i>Home</a></li>
                     <li aria-current="page">About</li>
                 </ol>
             </nav>
@@ -116,6 +116,44 @@ ob_start();
     </section>
     <!-- ===== ABOUT END ===== -->
 
+    <!-- ===== FOUNDER ===== -->
+    <section class="founder-sec" id="founder" aria-labelledby="founderTitle">
+        <div class="container-xl">
+            <div class="founder-card">
+                <div class="row align-items-center gy-5 gx-lg-5">
+                    <div class="col-lg-5">
+                        <div class="founder-media">
+                            <div class="founder-frame">
+                                <img src="assets/images/founder.jpg" alt="Gurvinder Singh, Founder of MRV International Pre-School &amp; Day Care" width="600" height="720" loading="lazy" decoding="async">
+                            </div>
+                            <span class="founder-badge"><i class="bi bi-stars" aria-hidden="true"></i>Founder &amp; Visionary</span>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-7 founder-body">
+                        <span class="founder-kicker"><i class="bi bi-person-heart" aria-hidden="true"></i>Meet Our Founder</span>
+                        <h2 id="founderTitle">Gurvinder Singh</h2>
+                        <p class="founder-role">Founder · MRV International Pre-School &amp; Day Care</p>
+                        <p class="founder-lead">Driven by a lifelong commitment to meaningful early childhood education, Gurvinder Singh envisioned a preschool where curiosity, warmth, and strong values come together from day one.</p>
+                        <p>Under his leadership, MRV International has grown into a nurturing learning community where every child is respected as an individual—guided gently to build confidence, creativity, and a genuine love for discovery in a safe, joyful environment.</p>
+
+                        <blockquote class="founder-quote">
+                            <i class="bi bi-quote" aria-hidden="true"></i>
+                            <p>"When we nurture a child's natural curiosity with love, patience, and purpose, we don't just prepare them for school—we prepare them for life."</p>
+                        </blockquote>
+
+                        <div class="founder-pillars">
+                            <span><i class="bi bi-heart-fill" aria-hidden="true"></i>Child-First Philosophy</span>
+                            <span><i class="bi bi-shield-check" aria-hidden="true"></i>Safe &amp; Caring Spaces</span>
+                            <span><i class="bi bi-lightbulb-fill" aria-hidden="true"></i>Holistic Growth</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- ===== FOUNDER END ===== -->
+
     <!-- ===== TIMELINE ===== -->
     <section class="tl" id="timeline" aria-labelledby="tlTitle">
         <div class="container-xl">
@@ -178,7 +216,7 @@ ob_start();
                 </div>
                 <div class="vc-actions">
                     <a href="contact-us" class="vc-btn">Book a Campus Visit<i class="bi bi-arrow-right" aria-hidden="true"></i></a>
-                    <a href="tel:+919250900571" class="vc-btn vc-btn--line"><i class="bi bi-telephone-fill" aria-hidden="true"></i>+91 9250900571</a>
+                    <a href="tel:+919250900572" class="vc-btn vc-btn--line"><i class="bi bi-telephone-fill" aria-hidden="true"></i>+91 9250900572</a>
                 </div>
             </div>
         </div>

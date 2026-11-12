@@ -692,8 +692,8 @@
     }
 
     .prog-age {
-        right: -4%;
-        top: -14%;
+        right: 0;
+        top: -10%;
         padding: .45rem .75rem .45rem .45rem
     }
 
@@ -708,8 +708,8 @@
     }
 
     .prog-sticker {
-        left: -3%;
-        bottom: -12%;
+        left: 0;
+        bottom: -10%;
         font-size: .76rem;
         padding: .45rem .9rem
     }

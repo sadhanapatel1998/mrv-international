@@ -2,7 +2,7 @@
 $title = 'Our Team | MRV International Pre-School & Day Care, Delhi';
 $description = 'Learn about MRV International Pre-School & Day Care in New Mahavir Nagar, New Delhi. Discover our child-friendly learning environment, early education approach, activities and safe day care facilities.';
 $keywords = 'About MRV International Pre-School, MRV International Day Care, Preschool in New Mahavir Nagar, Play School in New Delhi, Early Childhood Education Delhi, Child Development, Nursery School Delhi, Day Care Centre New Mahavir Nagar';
-$canonical = 'https://mrvinternational.in/about-us.php';
+$canonical = 'https://mrvinternational.in/our-team';
 ob_start();
 ?>
 
@@ -16,7 +16,7 @@ ob_start();
             <p class="pb-text">Professional, innovative founders committed to your child's growth and your success.</p>
             <nav aria-label="Breadcrumb">
                 <ol class="pb-crumb">
-                    <li><a href="/"><i class="bi bi-house-heart-fill" aria-hidden="true"></i>Home</a></li>
+                    <li><a href="./"><i class="bi bi-house-heart-fill" aria-hidden="true"></i>Home</a></li>
                     <li aria-current="page">Our Team</li>
                 </ol>
             </nav>
@@ -77,7 +77,7 @@ ob_start();
             <!-- Featured: Director / Principal -->
             <article class="team-lead">
                 <div class="team-lead-photo">
-                    <img src="assets/images/team/principal.webp" alt="[Principal Name], Principal of MRV International Pre-School" width="600" height="600" loading="lazy" decoding="async">
+                    <img src="assets/images/team/principal.webp" alt="Dr. Pranavi Luthra, Principal of MRV International Pre-School" width="600" height="600" loading="lazy" decoding="async">
                     <span class="team-lead-badge"><i class="bi bi-award-fill"></i>Principal</span>
                 </div>
                 <div class="team-lead-text">

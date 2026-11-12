@@ -18,19 +18,20 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // Header height -> CSS variable, so the banner starts below the fixed header
   const setHeaderHeight = () => {
-    if (header.classList.contains("scrolled")) return;
-    root.style.setProperty(
-      "--header-h",
-      topbar.offsetHeight + navbar.offsetHeight + "px",
-    );
+    if (!header || header.classList.contains("scrolled")) return;
+    const h =
+      (topbar ? topbar.offsetHeight : 0) + (navbar ? navbar.offsetHeight : 0);
+    if (h > 0) root.style.setProperty("--header-h", h + "px");
   };
 
   // Header turns solid after scrolling (or while the mobile menu is open)
-  const updateHeader = () =>
+  const updateHeader = () => {
+    if (!header) return;
     header.classList.toggle(
       "scrolled",
-      window.scrollY > 40 || nav.classList.contains("show"),
+      window.scrollY > 40 || (nav ? nav.classList.contains("show") : false),
     );
+  };
 
   setHeaderHeight();
   updateHeader();
@@ -40,10 +41,12 @@ document.addEventListener("DOMContentLoaded", () => {
     updateHeader();
   });
   window.addEventListener("load", setHeaderHeight);
-  nav.addEventListener("show.bs.collapse", () =>
-    header.classList.add("scrolled"),
-  );
-  nav.addEventListener("hidden.bs.collapse", updateHeader);
+  if (nav && header) {
+    nav.addEventListener("show.bs.collapse", () =>
+      header.classList.add("scrolled"),
+    );
+    nav.addEventListener("hidden.bs.collapse", updateHeader);
+  }
 
   // Desktop + mouse: dropdowns open on hover (CSS), clicking the parent opens its page.
   // Touch / mobile: the parent link toggles the dropdown.
@@ -59,16 +62,18 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
   // Mobile: close the menu after choosing a link
-  nav
-    .querySelectorAll(
-      ".dropdown-item, a.nav-link:not(.dropdown-toggle), .btn-sgs",
-    )
-    .forEach((link) =>
-      link.addEventListener("click", () => {
-        if (nav.classList.contains("show"))
-          bootstrap.Collapse.getOrCreateInstance(nav).hide();
-      }),
-    );
+  if (nav) {
+    nav
+      .querySelectorAll(
+        ".dropdown-item, a.nav-link:not(.dropdown-toggle), .nav-cta .btn",
+      )
+      .forEach((link) =>
+        link.addEventListener("click", () => {
+          if (nav.classList.contains("show"))
+            bootstrap.Collapse.getOrCreateInstance(nav).hide();
+        }),
+      );
+  }
 
   // Missing images: hide banner/logo/about photos, drop service images (card shows colour fallback)
   const onImgError = (img, handler) => {
@@ -83,8 +88,10 @@ document.addEventListener("DOMContentLoaded", () => {
     .forEach((img) => onImgError(img, () => img.remove()));
 
   // Carousel: no autoplay for people who prefer reduced motion
-  const carousel = bootstrap.Carousel.getOrCreateInstance(carouselEl);
-  if (reduceMotion.matches) carousel.pause();
+  if (carouselEl && typeof bootstrap !== "undefined") {
+    const carousel = bootstrap.Carousel.getOrCreateInstance(carouselEl);
+    if (reduceMotion.matches) carousel.pause();
+  }
 
   // Banner doodles follow the mouse a little (desktop only)
   const decos = hero ? hero.querySelectorAll(".deco[data-depth]") : [];
