@@ -1,0 +1,382 @@
+/* ===== VISION & MISSION PAGE ===== */
+.vm {
+    position: relative;
+    padding: clamp(3rem, 7vw, 5rem) 0 clamp(3.5rem, 8vw, 6rem);
+    background: #fff;
+    overflow: hidden
+}
+
+.vm::before {
+    content: "";
+    position: absolute;
+    left: 3%;
+    top: 2rem;
+    width: 140px;
+    height: 140px;
+    background: radial-gradient(rgba(251, 192, 45, .6) 2px, transparent 2.5px) 0 0/18px 18px;
+    pointer-events: none
+}
+
+.vm::after {
+    content: "";
+    position: absolute;
+    right: -110px;
+    bottom: -110px;
+    width: 280px;
+    height: 280px;
+    border-radius: 50%;
+    background: rgba(43, 143, 216, .08)
+}
+
+.vm .container-xl {
+    position: relative;
+    z-index: 1
+}
+
+.vm-grid {
+    padding-top: 1rem
+}
+
+/* Card */
+.vm-card {
+    --c: var(--red);
+    --c-dark: var(--red-dark);
+    --c-soft: #fde8e9;
+    --r: -1deg;
+    position: relative;
+    height: 100%;
+    padding: 3rem clamp(1.5rem, 3.5vw, 2.6rem) 2.4rem;
+    background:
+        radial-gradient(var(--c-soft) 1.5px, transparent 2px) 0 0/22px 22px,
+        #fff;
+    border: 3px solid var(--c);
+    border-radius: 30px;
+    box-shadow: 0 8px 0 var(--c), 0 24px 44px rgba(10, 37, 64, .12);
+    transform: rotate(var(--r));
+    overflow: hidden;
+    transition: transform .3s, box-shadow .3s
+}
+
+.vm-card--vision {
+    --c: var(--blue);
+    --c-dark: var(--blue-dark);
+    --c-soft: #e3f1fc;
+    --r: 1deg
+}
+
+.vm-card:hover {
+    transform: rotate(0) translateY(-6px);
+    box-shadow: 0 12px 0 var(--c), 0 30px 50px rgba(10, 37, 64, .16)
+}
+
+/* Notebook tab */
+.vm-tab {
+    position: absolute;
+    top: 0;
+    right: 2rem;
+    padding: .45rem 1.1rem .55rem;
+    border-radius: 0 0 14px 14px;
+    background: var(--c);
+    color: #fff;
+    font-size: .78rem;
+    font-weight: 700;
+    letter-spacing: .06em;
+    text-transform: uppercase
+}
+
+.vm-icon-wrap {
+    position: relative;
+    display: inline-block;
+    margin-bottom: 1.4rem
+}
+
+.vm-icon-wrap::before {
+    content: "";
+    position: absolute;
+    inset: -14px;
+    border: 3px dashed var(--c);
+    border-radius: 50%;
+    opacity: .45;
+    animation: spin 24s linear infinite
+}
+
+.vm-icon {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 86px;
+    height: 86px;
+    border-radius: 42% 58% 55% 45%/50% 45% 55% 50%;
+    background: var(--c);
+    color: #fff;
+    font-size: 2.3rem;
+    box-shadow: 0 0 0 8px var(--c-soft);
+    transition: transform .3s, border-radius .4s
+}
+
+.vm-card:hover .vm-icon {
+    transform: rotate(-10deg) scale(1.05);
+    border-radius: 50%
+}
+
+.vm-card h3 {
+    position: relative;
+    display: inline-block;
+    font-family: var(--font-fun);
+    font-weight: 800;
+    font-size: clamp(1.8rem, 3.4vw, 2.4rem);
+    color: var(--ink);
+    margin: 0 0 .8rem;
+    padding-bottom: .5rem
+}
+
+.vm-card h3::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 80px;
+    height: 10px;
+    background: var(--c);
+    -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 80 10'%3E%3Cpath d='M2 6C11 1 18 1 26 5s15 4 23 0 15-4 23 0 6 2 7 1' fill='none' stroke='%23000' stroke-width='3.5' stroke-linecap='round'/%3E%3C/svg%3E") no-repeat;
+    mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 80 10'%3E%3Cpath d='M2 6C11 1 18 1 26 5s15 4 23 0 15-4 23 0 6 2 7 1' fill='none' stroke='%23000' stroke-width='3.5' stroke-linecap='round'/%3E%3C/svg%3E") no-repeat
+}
+
+.vm-card p {
+    position: relative;
+    margin: 0 0 1.5rem;
+    color: #3d4f66;
+    font-size: 1.05rem;
+    line-height: 1.85
+}
+
+.vm-tags {
+    position: relative;
+    display: flex;
+    flex-wrap: wrap;
+    gap: .5rem;
+    list-style: none;
+    margin: 0;
+    padding: 0
+}
+
+.vm-tags li {
+    padding: .35rem .9rem;
+    border-radius: 50px;
+    background: var(--c-soft);
+    color: var(--c-dark);
+    font-size: .82rem;
+    font-weight: 600;
+    border: 1.5px dashed var(--c)
+}
+
+/* Big faded icon */
+.vm-ghost {
+    position: absolute;
+    right: -1.5rem;
+    bottom: -2.5rem;
+    font-size: 11rem;
+    line-height: 1;
+    color: var(--c);
+    opacity: .07;
+    pointer-events: none
+}
+
+/* ===== WHY CHOOSE ===== */
+.vm-why {
+    position: relative;
+    padding: clamp(3.5rem, 8vw, 6rem) 0;
+    background:
+        radial-gradient(rgba(43, 143, 216, .14) 1.5px, transparent 2px) 0 0/24px 24px,
+        var(--soft);
+    overflow: hidden
+}
+
+.vm-why::before {
+    content: "";
+    position: absolute;
+    right: -120px;
+    top: -120px;
+    width: 300px;
+    height: 300px;
+    border-radius: 50%;
+    background: rgba(251, 192, 45, .22)
+}
+
+.vm-why::after {
+    content: "";
+    position: absolute;
+    left: 4%;
+    bottom: 3rem;
+    width: 110px;
+    height: 30px;
+    background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 120 30'%3E%3Cpath d='M4 18C16 4 26 4 34 16s20 12 28 0 20-12 28 0 18 10 26-2' fill='none' stroke='%23e3242b' stroke-width='5' stroke-linecap='round'/%3E%3C/svg%3E") no-repeat center/contain;
+    opacity: .6
+}
+
+.vm-why .container-xl {
+    position: relative;
+    z-index: 1
+}
+
+.vm-why .sec-head h2 {
+    max-width: 680px;
+    margin-left: auto;
+    margin-right: auto
+}
+
+.why-card {
+    --c: var(--red);
+    --c-soft: #fde8e9;
+    --c-on: #fff;
+    position: relative;
+    height: 100%;
+    padding: 2rem 1.7rem 1.8rem;
+    background: #fff;
+    border: 2px solid #dbe7f3;
+    border-radius: 24px;
+    box-shadow: 0 5px 0 #dbe7f3;
+    overflow: hidden;
+    transition: transform .3s, border-color .3s, box-shadow .3s
+}
+
+.why--blue {
+    --c: var(--blue);
+    --c-soft: #e3f1fc
+}
+
+.why--yellow {
+    --c: var(--yellow);
+    --c-soft: #fff4d6;
+    --c-on: var(--ink)
+}
+
+/* Corner blob */
+.why-card::before {
+    content: "";
+    position: absolute;
+    right: -40px;
+    top: -40px;
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    background: var(--c-soft);
+    transition: transform .4s
+}
+
+.why-card:hover {
+    transform: translateY(-6px) rotate(-.8deg);
+    border-color: var(--c);
+    box-shadow: 0 9px 0 var(--c)
+}
+
+.why-card:hover::before {
+    transform: scale(1.6)
+}
+
+.why-num {
+    position: absolute;
+    top: .9rem;
+    right: 1.2rem;
+    font-family: var(--font-fun);
+    font-size: 2.6rem;
+    font-weight: 800;
+    line-height: 1;
+    color: transparent;
+    -webkit-text-stroke: 2px var(--c);
+    opacity: .7
+}
+
+.why-icon {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 64px;
+    height: 64px;
+    margin-bottom: 1.2rem;
+    border-radius: 20px;
+    background: var(--c);
+    color: var(--c-on);
+    font-size: 1.7rem;
+    box-shadow: 0 6px 0 rgba(10, 37, 64, .1);
+    transform: rotate(-6deg);
+    transition: transform .3s
+}
+
+.why-card:hover .why-icon {
+    transform: rotate(6deg) scale(1.08)
+}
+
+.why-card h3 {
+    position: relative;
+    font-family: var(--font-fun);
+    font-size: 1.35rem;
+    font-weight: 800;
+    color: var(--ink);
+    margin: 0 0 .4rem
+}
+
+.why-card p {
+    position: relative;
+    margin: 0;
+    color: #4a5a6e;
+    font-size: .95rem;
+    line-height: 1.7
+}
+
+@media(max-width:991.98px) {
+    .vm-card {
+        --r: 0deg
+    }
+
+    .vm-card--vision {
+        --r: 0deg
+    }
+}
+
+@media(max-width:575.98px) {
+    .vm-card {
+        padding: 2.8rem 1.3rem 2rem;
+        border-radius: 24px
+    }
+
+    .vm-tab {
+        right: 1.2rem
+    }
+
+    .vm-icon {
+        width: 70px;
+        height: 70px;
+        font-size: 1.9rem
+    }
+
+    .vm-card p {
+        font-size: .98rem
+    }
+
+    .vm-ghost {
+        font-size: 8rem
+    }
+
+    .vm-why::after {
+        display: none
+    }
+
+    .why-card {
+        padding: 1.6rem 1.3rem
+    }
+}
+
+@media(prefers-reduced-motion:reduce) {
+
+    .vm-card,
+    .vm-card:hover,
+    .vm-card:hover .vm-icon,
+    .why-card:hover,
+    .why-card:hover .why-icon,
+    .why-card:hover::before {
+        transform: none
+    }
+}

@@ -1,0 +1,70 @@
+
+# ==========================================
+# MRV INTERNATIONAL - URL & SECURITY SETTINGS
+# https://mrvinternational.in
+# ==========================================
+
+Options -Indexes
+Options -MultiViews
+
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+    RewriteBase /
+
+    # 1. Force HTTPS and Remove WWW
+    RewriteCond %{HTTPS} !=on [OR]
+    RewriteCond %{HTTP_HOST} ^www\.mrvinternational\.in$ [NC]
+    RewriteRule ^ https://mrvinternational.in%{REQUEST_URI} [R=301,L,NE]
+
+    # 2. Redirect index.php and index to Homepage
+    RewriteCond %{THE_REQUEST} \s/+index(?:\.php)?[\s?] [NC]
+    RewriteRule ^index(?:\.php)?/?$ https://mrvinternational.in/ [R=301,L,NE]
+
+    # 3. Remove .php Extension (301 Redirect)
+    RewriteCond %{THE_REQUEST} \s/+(.+?)\.php[\s?] [NC]
+    RewriteRule ^(.+?)\.php$ https://mrvinternational.in/$1 [R=301,L,NE]
+
+    # 4. Internally Load PHP Files Without Extension
+    RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteCond %{REQUEST_FILENAME}\.php -f
+    RewriteRule ^(.+?)/?$ $1.php [L]
+
+</IfModule>
+
+# ==========================================
+# SECURITY SETTINGS
+# ==========================================
+
+# 5. Disable Directory Browsing
+Options -Indexes
+
+# 6. Block Access to Sensitive Files
+<FilesMatch "(^\.|\.env|\.ini|\.log|\.sql|\.bak|\.old|\.conf|composer\.(json|lock)|package(-lock)?\.json|error_log|phpunit\.xml)$">
+    Require all denied
+</FilesMatch>
+
+# 7. Block Direct Access to Important Files
+<FilesMatch "^(wp-config\.php|\.htaccess|\.htpasswd)$">
+    Require all denied
+</FilesMatch>
+
+# 8. Security Headers
+<IfModule mod_headers.c>
+    Header always set X-Content-Type-Options "nosniff"
+    Header always set X-Frame-Options "SAMEORIGIN"
+    Header always set Referrer-Policy "strict-origin-when-cross-origin"
+    Header always set Permissions-Policy "camera=(), microphone=(), geolocation=()"
+    Header always set X-XSS-Protection "0"
+
+    # HSTS - Only use when HTTPS is working correctly
+    Header always set Strict-Transport-Security "max-age=31536000"
+</IfModule>
+
+# 9. Protect Hidden Files and Directories
+<IfModule mod_rewrite.c>
+    RewriteRule (^|/)\.(?!well-known/) - [F,L]
+</IfModule>
+
+# ==========================================
+# END CONFIGURATION
+# ==========================================

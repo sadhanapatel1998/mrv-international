@@ -1,0 +1,417 @@
+/* ===== OUR TEAM PAGE ===== */
+.team {
+    --green: #2fb36d;
+    position: relative;
+    padding: clamp(3rem, 7vw, 5rem) 0 clamp(3.5rem, 8vw, 6rem);
+    background: #fff;
+    overflow: hidden
+}
+
+.team::before {
+    content: "";
+    position: absolute;
+    right: 3%;
+    top: 2rem;
+    width: 140px;
+    height: 140px;
+    background: radial-gradient(rgba(227, 36, 43, .3) 2px, transparent 2.5px) 0 0/18px 18px;
+    pointer-events: none
+}
+
+.team::after {
+    content: "";
+    position: absolute;
+    left: -120px;
+    top: 45%;
+    width: 280px;
+    height: 280px;
+    border-radius: 50%;
+    background: rgba(251, 192, 45, .14)
+}
+
+.team .container-xl {
+    position: relative;
+    z-index: 1
+}
+
+/* ---------- Featured lead ---------- */
+.team-lead {
+    display: grid;
+    grid-template-columns: minmax(240px, 360px) 1fr;
+    align-items: center;
+    gap: clamp(2rem, 5vw, 4rem);
+    padding: clamp(1.8rem, 4vw, 3rem);
+    margin-bottom: clamp(3rem, 7vw, 4.5rem);
+    background:
+        radial-gradient(rgba(43, 143, 216, .14) 1.5px, transparent 2px) 0 0/22px 22px,
+        var(--soft);
+    border-radius: 32px;
+    border: 3px dashed #bcd8f0
+}
+
+.team-lead-photo {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 1;
+    margin: 0 auto
+}
+
+.team-lead-photo::before {
+    content: "";
+    position: absolute;
+    inset: -4% 6% 6% -4%;
+    background: var(--yellow);
+    border-radius: 52% 48% 45% 55%/48% 55% 45% 52%;
+    transform: rotate(-6deg);
+    animation: morph 9s ease-in-out infinite
+}
+
+.team-lead-photo img {
+    position: relative;
+    z-index: 1;
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border: 8px solid #fff;
+    border-radius: 44% 56% 52% 48%/52% 44% 56% 48%;
+    background: linear-gradient(135deg, #fff4d6, var(--soft));
+    box-shadow: 0 20px 44px rgba(10, 37, 64, .18)
+}
+
+.team-lead-badge {
+    position: absolute;
+    z-index: 2;
+    left: 50%;
+    bottom: -4px;
+    transform: translateX(-50%) rotate(-3deg);
+    display: inline-flex;
+    align-items: center;
+    gap: .45rem;
+    padding: .5rem 1.2rem;
+    border-radius: 50px;
+    background: var(--red);
+    color: #fff;
+    font-weight: 600;
+    font-size: .88rem;
+    white-space: nowrap;
+    box-shadow: 0 5px 0 var(--red-dark)
+}
+
+.team-lead-badge i {
+    color: var(--yellow)
+}
+
+.team-lead-kicker {
+    display: inline-flex;
+    align-items: center;
+    gap: .5rem;
+    margin-bottom: .8rem;
+    padding: .35rem 1rem;
+    border-radius: 50px;
+    background: #fff;
+    border: 2px dashed var(--red);
+    color: var(--red);
+    font-weight: 600;
+    font-size: .85rem
+}
+
+.team-lead h3 {
+    font-family: var(--font-fun);
+    font-weight: 800;
+    font-size: clamp(1.8rem, 3.6vw, 2.5rem);
+    line-height: 1.1;
+    color: var(--ink);
+    margin: 0 0 .3rem
+}
+
+.team-lead-role {
+    margin: 0 0 1.2rem;
+    color: var(--blue-dark);
+    font-weight: 600
+}
+
+.team-lead blockquote {
+    position: relative;
+    margin: 0 0 1.6rem;
+    padding: 1.2rem 1.4rem 1.2rem 3.4rem;
+    background: #fff;
+    border-radius: 20px;
+    box-shadow: 0 8px 22px rgba(10, 37, 64, .08)
+}
+
+.team-lead blockquote::before {
+    content: "\F6B0";
+    font-family: "bootstrap-icons";
+    position: absolute;
+    left: 1rem;
+    top: .6rem;
+    font-size: 2rem;
+    color: var(--yellow)
+}
+
+.team-lead blockquote p {
+    margin: 0;
+    color: #3d4f66;
+    line-height: 1.8;
+    font-style: italic
+}
+
+/* ---------- Staff cards ---------- */
+.team-grid {
+    padding-top: 1rem
+}
+
+.team-card {
+    --c: var(--red);
+    --c-soft: #fde8e9;
+    --c-on: #fff;
+    position: relative;
+    height: 100%;
+    padding: 1.4rem 1.2rem 1.6rem;
+    text-align: center;
+    background: #fff;
+    border: 2px solid #e3ecf5;
+    border-radius: 28px;
+    box-shadow: 0 5px 0 #e3ecf5;
+    transition: transform .3s, border-color .3s, box-shadow .3s
+}
+
+.team--blue {
+    --c: var(--blue);
+    --c-soft: #e3f1fc
+}
+
+.team--yellow {
+    --c: var(--yellow);
+    --c-soft: #fff4d6;
+    --c-on: var(--ink)
+}
+
+.team--green {
+    --c: var(--green);
+    --c-soft: #e2f6eb
+}
+
+/* Coloured top arc */
+.team-card::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    height: 46%;
+    border-radius: 26px 26px 50% 50%/26px 26px 30% 30%;
+    background:
+        radial-gradient(rgba(255, 255, 255, .55) 1.5px, transparent 2px) 0 0/16px 16px,
+        var(--c-soft);
+    transition: background-color .3s
+}
+
+.team-card:hover {
+    transform: translateY(-8px);
+    border-color: var(--c);
+    box-shadow: 0 10px 0 var(--c)
+}
+
+.team-photo {
+    position: relative;
+    width: 76%;
+    max-width: 200px;
+    aspect-ratio: 1;
+    margin: .4rem auto 1.1rem
+}
+
+.team-photo::before {
+    content: "";
+    position: absolute;
+    inset: -10px;
+    border: 3px dashed var(--c);
+    border-radius: 50%;
+    opacity: .6;
+    animation: spin 26s linear infinite
+}
+
+.team-photo img {
+    position: relative;
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 50%;
+    border: 6px solid #fff;
+    background: linear-gradient(135deg, var(--c-soft), #fff);
+    box-shadow: 0 12px 26px rgba(10, 37, 64, .15);
+    transition: transform .4s
+}
+
+.team-card:hover .team-photo img {
+    transform: scale(1.04) rotate(-3deg)
+}
+
+.team-dot {
+    position: absolute;
+    right: 6%;
+    top: 6%;
+    width: 22px;
+    height: 22px;
+    border-radius: 50%;
+    border: 4px solid #fff;
+    background: var(--c);
+    box-shadow: 0 4px 10px rgba(10, 37, 64, .15);
+    animation: float 4s ease-in-out infinite
+}
+
+.team-role {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    gap: .4rem;
+    padding: .35rem .9rem;
+    border-radius: 50px;
+    background: var(--c);
+    color: var(--c-on);
+    font-size: .8rem;
+    font-weight: 600;
+    transform: rotate(-2deg)
+}
+
+.team-card h3 {
+    position: relative;
+    font-family: var(--font-fun);
+    font-weight: 800;
+    font-size: 1.3rem;
+    color: var(--ink);
+    margin: .8rem 0 .2rem
+}
+
+.team-card p {
+    position: relative;
+    margin: 0;
+    color: #4a5a6e;
+    font-size: .9rem;
+    line-height: 1.6
+}
+
+/* ---------- Join CTA ---------- */
+.team-join {
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 1.5rem 2rem;
+    margin-top: clamp(3rem, 7vw, 4.5rem);
+    padding: clamp(1.8rem, 4vw, 2.6rem);
+    background:
+        radial-gradient(rgba(255, 255, 255, .16) 1.5px, transparent 2px) 0 0/20px 20px,
+        linear-gradient(135deg, var(--blue-dark), var(--blue));
+    border-radius: 26px;
+    box-shadow: 0 8px 0 #145586, 0 22px 40px rgba(10, 37, 64, .14);
+    overflow: hidden
+}
+
+.team-join::after {
+    content: "";
+    position: absolute;
+    right: -50px;
+    bottom: -60px;
+    width: 170px;
+    height: 170px;
+    border-radius: 50%;
+    border: 16px solid rgba(255, 255, 255, .12)
+}
+
+.team-join > * {
+    position: relative;
+    z-index: 1
+}
+
+.team-join-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    flex: none;
+    width: 74px;
+    height: 74px;
+    border-radius: 50% 50% 50% 10px;
+    background: var(--yellow);
+    color: var(--red);
+    font-size: 2rem;
+    transform: rotate(-8deg);
+    box-shadow: 0 6px 0 rgba(0, 0, 0, .15);
+    animation: float 4s ease-in-out infinite
+}
+
+.team-join-text {
+    flex: 1
+}
+
+.team-join h2 {
+    font-family: var(--font-fun);
+    font-weight: 800;
+    font-size: clamp(1.5rem, 3vw, 2.1rem);
+    color: #fff;
+    margin: 0 0 .3rem
+}
+
+.team-join p {
+    margin: 0;
+    color: rgba(255, 255, 255, .9);
+    line-height: 1.7
+}
+
+.team-join-actions {
+    flex: none
+}
+
+@media(max-width:991.98px) {
+    .team-lead {
+        grid-template-columns: 1fr;
+        text-align: center
+    }
+
+    .team-lead-photo {
+        max-width: 300px
+    }
+
+    .team-lead blockquote {
+        text-align: left
+    }
+
+    .team-join {
+        flex-direction: column;
+        text-align: center
+    }
+}
+
+@media(max-width:575.98px) {
+    .team-lead {
+        padding: 1.6rem 1.2rem;
+        border-radius: 24px
+    }
+
+    .team-lead-photo {
+        max-width: 240px
+    }
+
+    .team-lead blockquote {
+        padding: 1rem 1rem 1rem 2.8rem
+    }
+
+    .team-lead .btn,
+    .team-join-actions,
+    .team-join-actions .btn {
+        width: 100%
+    }
+
+    .team-photo {
+        width: 62%
+    }
+}
+
+@media(prefers-reduced-motion:reduce) {
+
+    .team-card:hover,
+    .team-card:hover .team-photo img {
+        transform: none
+    }
+}
