@@ -12,7 +12,8 @@ ob_start();
     <section class="page-banner" aria-labelledby="pageTitle">
         <div class="container-xl pb-inner">
             <h1 class="pb-title" id="pageTitle">Our Gallery</h1>
-            <p class="pb-text">Happy moments, fun activities and joyful celebrations from MRV International Pre-School &amp; Day Care.</p>
+            <p class="pb-text">Happy moments, fun activities and joyful celebrations from MRV International Pre-School
+                &amp; Day Care.</p>
 
             <nav aria-label="Breadcrumb">
                 <ol class="pb-crumb">
@@ -78,65 +79,289 @@ ob_start();
             <div class="sec-head">
                 <p class="sec-sub">Little Moments, Big Smiles</p>
                 <h2 id="galleryTitle">Moments at MRV International</h2>
-                <p class="sec-intro">A peek into the happy days at MRV International Pre-School &amp; Day Care, from classroom fun to colourful celebrations.</p>
+                <p class="sec-intro">A peek into the happy days at MRV International Pre-School &amp; Day Care, from
+                    classroom fun to colourful celebrations.</p>
             </div>
 
             <div class="gal-filters" role="group" aria-label="Filter photos">
-                <button type="button" class="gal-filter is-active" data-filter="all" aria-pressed="true"><i class="bi bi-grid"></i>All</button>
-                <button type="button" class="gal-filter" data-filter="classroom" aria-pressed="false"><i class="bi bi-easel"></i>Classroom</button>
-                <button type="button" class="gal-filter" data-filter="activities" aria-pressed="false"><i class="bi bi-brush"></i>Activities</button>
-                <button type="button" class="gal-filter" data-filter="celebrations" aria-pressed="false"><i class="bi bi-balloon"></i>Celebrations</button>
-                <button type="button" class="gal-filter" data-filter="daycare" aria-pressed="false"><i class="bi bi-house-heart"></i>Day Care</button>
+                <button type="button" class="gal-filter is-active" data-filter="all" aria-pressed="true"><i
+                        class="bi bi-grid"></i>All</button>
+                <button type="button" class="gal-filter" data-filter="classroom" aria-pressed="false"><i
+                        class="bi bi-easel"></i>Classroom</button>
+                <button type="button" class="gal-filter" data-filter="activities" aria-pressed="false"><i
+                        class="bi bi-brush"></i>Activities</button>
+                <button type="button" class="gal-filter" data-filter="celebrations" aria-pressed="false"><i
+                        class="bi bi-balloon"></i>Celebrations</button>
+                <button type="button" class="gal-filter" data-filter="daycare" aria-pressed="false"><i
+                        class="bi bi-house-heart"></i>Day Care</button>
             </div>
 
             <div class="gal-grid" id="galGrid">
-                <button type="button" class="gal-item g-big gal--red" data-cat="classroom" data-src="assets/images/gallery/g1.webp" data-caption="Learning together in the classroom">
-                    <img src="assets/images/gallery/g1.webp" alt="Children learning together in the classroom" width="800" height="800" loading="lazy" decoding="async">
-                    <span class="gal-tag">Classroom</span>
-                    <span class="gal-zoom"><i class="bi bi-arrows-fullscreen"></i></span>
-                </button>
-                <button type="button" class="gal-item gal--blue" data-cat="activities" data-src="assets/images/gallery/g2.webp" data-caption="Art &amp; craft time">
-                    <img src="assets/images/gallery/g2.webp" alt="Children painting during art and craft time" width="600" height="600" loading="lazy" decoding="async">
+                <!-- 01 -->
+                <button type="button" class="gal-item g-big gal--red" data-cat="activities"
+                    data-src="assets/images/gallery/g1.jpg" data-caption="Sensory &amp; fine motor building block play">
+                    <img src="assets/images/gallery/g1.jpg"
+                        alt="Child building colourful towers with interlocking blocks" width="800" height="800"
+                        loading="lazy" decoding="async">
                     <span class="gal-tag">Activities</span>
                     <span class="gal-zoom"><i class="bi bi-arrows-fullscreen"></i></span>
                 </button>
-                <button type="button" class="gal-item g-tall gal--yellow" data-cat="celebrations" data-src="assets/images/gallery/g3.webp" data-caption="Festival celebration at school">
-                    <img src="assets/images/gallery/g3.webp" alt="Children dressed up for a festival celebration" width="600" height="900" loading="lazy" decoding="async">
-                    <span class="gal-tag">Celebrations</span>
-                    <span class="gal-zoom"><i class="bi bi-arrows-fullscreen"></i></span>
-                </button>
-                <button type="button" class="gal-item gal--red" data-cat="daycare" data-src="assets/images/gallery/g4.webp" data-caption="Play time at day care">
-                    <img src="assets/images/gallery/g4.webp" alt="Children playing with toys at day care" width="600" height="600" loading="lazy" decoding="async">
-                    <span class="gal-tag">Day Care</span>
-                    <span class="gal-zoom"><i class="bi bi-arrows-fullscreen"></i></span>
-                </button>
-                <button type="button" class="gal-item g-wide gal--blue" data-cat="activities" data-src="assets/images/gallery/g5.webp" data-caption="Music &amp; movement session">
-                    <img src="assets/images/gallery/g5.webp" alt="Children dancing during a music and movement session" width="900" height="600" loading="lazy" decoding="async">
+                <!-- 02 -->
+                <button type="button" class="gal-item gal--blue" data-cat="activities"
+                    data-src="assets/images/gallery/g2.jpg" data-caption="Collaborative group activity in class">
+                    <img src="assets/images/gallery/g2.jpg" alt="Children working collaboratively on block structures"
+                        width="600" height="600" loading="lazy" decoding="async">
                     <span class="gal-tag">Activities</span>
                     <span class="gal-zoom"><i class="bi bi-arrows-fullscreen"></i></span>
                 </button>
-                <button type="button" class="gal-item gal--yellow" data-cat="classroom" data-src="assets/images/gallery/g6.webp" data-caption="Story time with our teacher">
-                    <img src="assets/images/gallery/g6.webp" alt="Teacher reading a story to children" width="600" height="600" loading="lazy" decoding="async">
-                    <span class="gal-tag">Classroom</span>
+                <!-- 03 -->
+                <button type="button" class="gal-item g-tall gal--yellow" data-cat="activities"
+                    data-src="assets/images/gallery/g3.jpg"
+                    data-caption="Focus &amp; fine motor blindfold activity preparation">
+                    <img src="assets/images/gallery/g3.jpg"
+                        alt="Young student preparing for sensory activity in classroom" width="600" height="900"
+                        loading="lazy" decoding="async">
+                    <span class="gal-tag">Activities</span>
                     <span class="gal-zoom"><i class="bi bi-arrows-fullscreen"></i></span>
                 </button>
-                <button type="button" class="gal-item g-wide gal--red" data-cat="celebrations" data-src="assets/images/gallery/g7.webp" data-caption="Annual day fun">
-                    <img src="assets/images/gallery/g7.webp" alt="Children performing on stage at the annual day" width="900" height="600" loading="lazy" decoding="async">
+                <!-- 04 -->
+                <button type="button" class="gal-item gal--red" data-cat="activities"
+                    data-src="assets/images/gallery/g4.jpg"
+                    data-caption="Blindfold sensory motor coordination challenge">
+                    <img src="assets/images/gallery/g4.jpg"
+                        alt="Little girl engaged in blindfolded tactile learning activity" width="600" height="600"
+                        loading="lazy" decoding="async">
+                    <span class="gal-tag">Activities</span>
+                    <span class="gal-zoom"><i class="bi bi-arrows-fullscreen"></i></span>
+                </button>
+                <!-- 05 -->
+                <button type="button" class="gal-item g-wide gal--blue" data-cat="celebrations"
+                    data-src="assets/images/gallery/g5.jpg" data-caption="Labour's Day dress-up celebration">
+                    <img src="assets/images/gallery/g5.jpg" alt="Students roleplaying on Labour's Day celebration"
+                        width="900" height="600" loading="lazy" decoding="async">
                     <span class="gal-tag">Celebrations</span>
                     <span class="gal-zoom"><i class="bi bi-arrows-fullscreen"></i></span>
                 </button>
-                <button type="button" class="gal-item gal--blue" data-cat="daycare" data-src="assets/images/gallery/g8.webp" data-caption="Healthy meal time">
-                    <img src="assets/images/gallery/g8.webp" alt="Children having a meal together at day care" width="600" height="600" loading="lazy" decoding="async">
-                    <span class="gal-tag">Day Care</span>
+                <!-- 06 -->
+                <button type="button" class="gal-item gal--yellow" data-cat="activities"
+                    data-src="assets/images/gallery/g6.jpg" data-caption="Concentration &amp; blindfold tactile task">
+                    <img src="assets/images/gallery/g6.jpg"
+                        alt="Smiling student practising blindfold stick balancing task" width="600" height="600"
+                        loading="lazy" decoding="async">
+                    <span class="gal-tag">Activities</span>
+                    <span class="gal-zoom"><i class="bi bi-arrows-fullscreen"></i></span>
+                </button>
+                <!-- 23 -->
+                <button type="button" class="gal-item gal--blue" data-cat="classroom"
+                    data-src="assets/images/gallery/g23.jpg" data-caption="Interactive Classroom Learning Activities">
+                    <img src="assets/images/gallery/g23.jpg"
+                        alt="Students participating in interactive classroom learning activities" width="900"
+                        height="600" loading="lazy" decoding="async">
+                    <span class="gal-tag">Classroom</span>
+                    <span class="gal-zoom"><i class="bi bi-arrows-fullscreen"></i></span>
+                </button>
+
+                <!-- 24 -->
+                <button type="button" class="gal-item gal--blue" data-cat="classroom"
+                    data-src="assets/images/gallery/g24.jpg" data-caption="Interactive Classroom Learning Activities">
+                    <img src="assets/images/gallery/g24.jpg"
+                        alt="Students participating in interactive classroom learning activities" width="900"
+                        height="600" loading="lazy" decoding="async">
+                    <span class="gal-tag">Library</span>
+                    <span class="gal-zoom"><i class="bi bi-arrows-fullscreen"></i></span>
+                </button>
+
+                <!-- 07 -->
+                <button type="button" class="gal-item gal--red" data-cat="activities"
+                    data-src="assets/images/gallery/g7.jpg" data-caption="Trace the Strokes handwriting readiness">
+                    <img src="assets/images/gallery/g7.jpg"
+                        alt="Young girl practising pre-writing strokes on textured card" width="600" height="600"
+                        loading="lazy" decoding="async">
+                    <span class="gal-tag">Activities</span>
+                    <span class="gal-zoom"><i class="bi bi-arrows-fullscreen"></i></span>
+                </button>
+                <!-- 08 -->
+                <button type="button" class="gal-item gal--blue" data-cat="activities"
+                    data-src="assets/images/gallery/g8.jpg" data-caption="Tactile stroke tracing practice">
+                    <img src="assets/images/gallery/g8.jpg" alt="Child focused on tracing lines on corrugated card"
+                        width="600" height="600" loading="lazy" decoding="async">
+                    <span class="gal-tag">Activities</span>
+                    <span class="gal-zoom"><i class="bi bi-arrows-fullscreen"></i></span>
+                </button>
+                <!-- 09 -->
+                <button type="button" class="gal-item g-wide gal--yellow" data-cat="celebrations"
+                    data-src="assets/images/gallery/g9.jpg" data-caption="Joyful classroom birthday celebration">
+                    <img src="assets/images/gallery/g9.jpg" alt="Children gathered happily around a birthday cake"
+                        width="900" height="600" loading="lazy" decoding="async">
+                    <span class="gal-tag">Celebrations</span>
+                    <span class="gal-zoom"><i class="bi bi-arrows-fullscreen"></i></span>
+                </button>
+                <!-- 10 -->
+                <button type="button" class="gal-item gal--red" data-cat="activities"
+                    data-src="assets/images/gallery/g10.jpg" data-caption="Tearing &amp; pasting shape activity">
+                    <img src="assets/images/gallery/g10.jpg" alt="Preschoolers proudly displaying paper pasting artwork"
+                        width="600" height="600" loading="lazy" decoding="async">
+                    <span class="gal-tag">Activities</span>
+                    <span class="gal-zoom"><i class="bi bi-arrows-fullscreen"></i></span>
+                </button>
+                <!-- 11 -->
+                <button type="button" class="gal-item gal--blue" data-cat="celebrations"
+                    data-src="assets/images/gallery/g11.jpg" data-caption="Birthday cheers with friends">
+                    <img src="assets/images/gallery/g11.jpg" alt="Happy boys clapping during classroom birthday event"
+                        width="600" height="600" loading="lazy" decoding="async">
+                    <span class="gal-tag">Celebrations</span>
+                    <span class="gal-zoom"><i class="bi bi-arrows-fullscreen"></i></span>
+                </button>
+                <!-- 12 -->
+                <button type="button" class="gal-item gal--yellow" data-cat="celebrations"
+                    data-src="assets/images/gallery/g12.jpg" data-caption="Celebration smiles &amp; balloons">
+                    <img src="assets/images/gallery/g12.jpg"
+                        alt="Excited child smiling in front of colourful birthday backdrop" width="600" height="600"
+                        loading="lazy" decoding="async">
+                    <span class="gal-tag">Celebrations</span>
+                    <span class="gal-zoom"><i class="bi bi-arrows-fullscreen"></i></span>
+                </button>
+                <!-- 13 -->
+                <button type="button" class="gal-item gal--red" data-cat="celebrations"
+                    data-src="assets/images/gallery/g13.jpg" data-caption="Sweet birthday celebration moment">
+                    <img src="assets/images/gallery/g13.jpg"
+                        alt="Smiling little girl in pink dress celebrating her birthday" width="600" height="600"
+                        loading="lazy" decoding="async">
+                    <span class="gal-tag">Celebrations</span>
+                    <span class="gal-zoom"><i class="bi bi-arrows-fullscreen"></i></span>
+                </button>
+                <!-- 14 -->
+                <button type="button" class="gal-item g-tall gal--blue" data-cat="celebrations"
+                    data-src="assets/images/gallery/g14.jpg" data-caption="Dressed up for school celebration">
+                    <img src="assets/images/gallery/g14.jpg" alt="Dapper young boy in vest suit at school event"
+                        width="600" height="900" loading="lazy" decoding="async">
+                    <span class="gal-tag">Celebrations</span>
+                    <span class="gal-zoom"><i class="bi bi-arrows-fullscreen"></i></span>
+                </button>
+                <!-- 15 -->
+                <button type="button" class="gal-item g-big gal--yellow" data-cat="celebrations"
+                    data-src="assets/images/gallery/g15.jpg"
+                    data-caption="Traditional Navratri festive dress celebration">
+                    <img src="assets/images/gallery/g15.jpg"
+                        alt="Children dressed in festive mythological attire for Navratri" width="800" height="800"
+                        loading="lazy" decoding="async">
+                    <span class="gal-tag">Celebrations</span>
+                    <span class="gal-zoom"><i class="bi bi-arrows-fullscreen"></i></span>
+                </button>
+                <!-- 16 -->
+                <button type="button" class="gal-item gal--red" data-cat="celebrations"
+                    data-src="assets/images/gallery/g16.jpg" data-caption="Dandiya fest colours &amp; dance">
+                    <img src="assets/images/gallery/g16.jpg"
+                        alt="Preschoolers in colourful chaniya choli with dandiya sticks" width="600" height="600"
+                        loading="lazy" decoding="async">
+                    <span class="gal-tag">Celebrations</span>
+                    <span class="gal-zoom"><i class="bi bi-arrows-fullscreen"></i></span>
+                </button>
+                <!-- 17 -->
+                <button type="button" class="gal-item gal--blue" data-cat="celebrations"
+                    data-src="assets/images/gallery/g17.jpg" data-caption="Navratri Dandiya Fest celebration">
+                    <img src="assets/images/gallery/g17.jpg"
+                        alt="Little child in traditional yellow attire with flower garland" width="600" height="600"
+                        loading="lazy" decoding="async">
+                    <span class="gal-tag">Celebrations</span>
+                    <span class="gal-zoom"><i class="bi bi-arrows-fullscreen"></i></span>
+                </button>
+                <!-- 18 -->
+                <button type="button" class="gal-item gal--yellow" data-cat="activities"
+                    data-src="assets/images/gallery/g18.jpg" data-caption="Creative handprint art activity">
+                    <img src="assets/images/gallery/g18.jpg"
+                        alt="Student showing painted hands during creative art session" width="600" height="600"
+                        loading="lazy" decoding="async">
+                    <span class="gal-tag">Activities</span>
+                    <span class="gal-zoom"><i class="bi bi-arrows-fullscreen"></i></span>
+                </button>
+                <!-- 19 -->
+                <button type="button" class="gal-item gal--red" data-cat="activities"
+                    data-src="assets/images/gallery/g19.jpg" data-caption="Number lace math learning activity">
+                    <img src="assets/images/gallery/g19.jpg"
+                        alt="Happy child standing near completed number lace counting activity" width="600" height="600"
+                        loading="lazy" decoding="async">
+                    <span class="gal-tag">Activities</span>
+                    <span class="gal-zoom"><i class="bi bi-arrows-fullscreen"></i></span>
+                </button>
+                <!-- 20 -->
+                <button type="button" class="gal-item g-wide gal--blue" data-cat="celebrations"
+                    data-src="assets/images/gallery/g20.jpg" data-caption="Festive Navratri &amp; Dussehra display">
+                    <img src="assets/images/gallery/g20.jpg"
+                        alt="Student dressed in kurta standing proudly by festival art board" width="900" height="600"
+                        loading="lazy" decoding="async">
+                    <span class="gal-tag">Celebrations</span>
+                    <span class="gal-zoom"><i class="bi bi-arrows-fullscreen"></i></span>
+                </button>
+
+                <!-- 21 -->
+                <button type="button" class="gal-item gal--blue" data-cat="celebrations"
+                    data-src="assets/images/gallery/g21.jpg" data-caption="Festive Navratri &amp; Dussehra display">
+                    <img src="assets/images/gallery/g21.jpg"
+                        alt="Student dressed in kurta standing proudly by festival art board" width="900" height="600"
+                        loading="lazy" decoding="async">
+                    <span class="gal-tag">Celebrations</span>
+                    <span class="gal-zoom"><i class="bi bi-arrows-fullscreen"></i></span>
+                </button>
+
+                <!-- 22 -->
+                <button type="button" class="gal-item gal--blue" data-cat="classroom"
+                    data-src="assets/images/gallery/g22.jpg" data-caption="Interactive Classroom Learning Activities">
+                    <img src="assets/images/gallery/g22.jpg"
+                        alt="Students participating in interactive classroom learning activities" width="900"
+                        height="600" loading="lazy" decoding="async">
+                    <span class="gal-tag">Classroom</span>
+                    <span class="gal-zoom"><i class="bi bi-arrows-fullscreen"></i></span>
+                </button>
+
+
+                <!-- 25 -->
+                <button type="button" class="gal-item gal--blue" data-cat="classroom"
+                    data-src="assets/images/gallery/g25.jpg" data-caption="Interactive Classroom Learning Activities">
+                    <img src="assets/images/gallery/g25.jpg"
+                        alt="Students participating in interactive classroom learning activities" width="900"
+                        height="600" loading="lazy" decoding="async">
+                    <span class="gal-tag">Fitness Area</span>
+                    <span class="gal-zoom"><i class="bi bi-arrows-fullscreen"></i></span>
+                </button>
+
+                <!-- 26 -->
+                <button type="button" class="gal-item gal--blue" data-cat="classroom"
+                    data-src="assets/images/gallery/g26.jpg" data-caption="Interactive Classroom Learning Activities">
+                    <img src="assets/images/gallery/g26.jpg"
+                        alt="Students participating in interactive classroom learning activities" width="900"
+                        height="600" loading="lazy" decoding="async">
+                    <span class="gal-tag">Classroom</span>
+                    <span class="gal-zoom"><i class="bi bi-arrows-fullscreen"></i></span>
+                </button>
+
+                <!-- 27 -->
+                <button type="button" class="gal-item gal--blue" data-cat="classroom"
+                    data-src="assets/images/gallery/g27.jpg" data-caption="Interactive Classroom Learning Activities">
+                    <img src="assets/images/gallery/g27.jpg"
+                        alt="Students participating in interactive classroom learning activities" width="900"
+                        height="600" loading="lazy" decoding="async">
+                    <span class="gal-tag">Classroom</span>
+                    <span class="gal-zoom"><i class="bi bi-arrows-fullscreen"></i></span>
+                </button>
+
+                <!-- 28 -->
+                <button type="button" class="gal-item g-wide gal--blue" data-cat="classroom"
+                    data-src="assets/images/gallery/g28.jpg" data-caption="Interactive Classroom Learning Activities">
+                    <img src="assets/images/gallery/g28.jpg"
+                        alt="Students participating in interactive classroom learning activities" width="900"
+                        height="600" loading="lazy" decoding="async">
+                    <span class="gal-tag">Classroom</span>
                     <span class="gal-zoom"><i class="bi bi-arrows-fullscreen"></i></span>
                 </button>
             </div>
 
-            <p class="gal-empty" id="galEmpty" hidden>More photos coming soon!</p>
-
+            <!-- <p class="gal-empty" id="galEmpty" hidden>More photos coming soon!</p> -->
             <div class="sec-cta gal-cta">
-                <a href="contact-us" class="btn btn-sgs btn-lg">Enquire for Admission<i class="bi bi-arrow-right ms-2"></i></a>
-                <a href="tel:+919250900572" class="btn btn-outline-sgs btn-lg"><i class="bi bi-telephone-fill me-2"></i>+91 9250900572</a>
+                <a href="contact-us" class="btn btn-sgs btn-lg">Enquire for Admission<i
+                        class="bi bi-arrow-right ms-2"></i></a>
+                <a href="tel:+919250900572" class="btn btn-outline-sgs btn-lg"><i
+                        class="bi bi-telephone-fill me-2"></i>+91 9250900572</a>
             </div>
 
         </div>
@@ -144,12 +369,14 @@ ob_start();
         <!-- Lightbox -->
         <div class="gal-lightbox" id="galLightbox" role="dialog" aria-modal="true" aria-label="Photo viewer" hidden>
             <button type="button" class="gal-lb-btn gal-lb-close" aria-label="Close"><i class="bi bi-x-lg"></i></button>
-            <button type="button" class="gal-lb-btn gal-lb-prev" aria-label="Previous photo"><i class="bi bi-chevron-left"></i></button>
+            <button type="button" class="gal-lb-btn gal-lb-prev" aria-label="Previous photo"><i
+                    class="bi bi-chevron-left"></i></button>
             <figure class="gal-lb-figure">
                 <img src="" alt="">
                 <figcaption><span class="gal-lb-caption"></span><span class="gal-lb-count"></span></figcaption>
             </figure>
-            <button type="button" class="gal-lb-btn gal-lb-next" aria-label="Next photo"><i class="bi bi-chevron-right"></i></button>
+            <button type="button" class="gal-lb-btn gal-lb-next" aria-label="Next photo"><i
+                    class="bi bi-chevron-right"></i></button>
         </div>
     </section>
     <!-- ===== GALLERY END ===== -->
@@ -159,5 +386,5 @@ ob_start();
 
 <?php
 $content = ob_get_clean();
-include_once  'layout.php';
+include_once 'layout.php';
 ?>
