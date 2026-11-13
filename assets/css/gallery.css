@@ -1,0 +1,415 @@
+/* ===== GALLERY SECTION ===== */
+.gallery {
+    position: relative;
+    padding: clamp(3rem, 7vw, 5.5rem) 0;
+    background: #fff;
+    overflow: hidden;
+}
+
+/* ----- Filter Pills ----- */
+.gal-filters {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: .7rem;
+    margin: 0 0 clamp(2rem, 4vw, 2.8rem);
+}
+
+.gal-filter {
+    display: inline-flex;
+    align-items: center;
+    gap: .45rem;
+    padding: .58rem 1.25rem;
+    border-radius: 50px;
+    border: 2px solid #dbe7f3;
+    background: #fff;
+    color: var(--ink);
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
+    font-size: .9rem;
+    cursor: pointer;
+    box-shadow: 0 4px 0 #dbe7f3;
+    transition: transform .15s, box-shadow .15s, background .2s, border-color .2s, color .2s;
+}
+
+.gal-filter i {
+    color: var(--blue);
+    font-size: 1rem;
+    transition: color .2s;
+}
+
+.gal-filter:hover,
+.gal-filter:focus-visible {
+    border-color: var(--blue);
+    color: var(--blue-dark);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 0 var(--soft);
+}
+
+.gal-filter.is-active {
+    background: var(--red);
+    border-color: var(--red);
+    color: #fff;
+    box-shadow: 0 4px 0 var(--red-dark);
+}
+
+.gal-filter.is-active i {
+    color: var(--yellow);
+}
+
+/* ----- Bento / Masonry Grid ----- */
+.gal-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-auto-rows: 230px;
+    grid-auto-flow: dense;
+    gap: 1.25rem;
+}
+
+.gal-item {
+    --gal-c: var(--blue);
+    position: relative;
+    display: block;
+    width: 100%;
+    height: 100%;
+    padding: 0;
+    border: 4px solid #fff;
+    border-radius: 24px;
+    overflow: hidden;
+    background: var(--soft);
+    cursor: pointer;
+    text-align: left;
+    box-shadow: 0 10px 26px rgba(10, 37, 64, .1), 0 0 0 2px #e3ecf5;
+    transition: transform .3s ease, box-shadow .3s ease;
+}
+
+.gal--red {
+    --gal-c: var(--red);
+}
+
+.gal--blue {
+    --gal-c: var(--blue);
+}
+
+.gal--yellow {
+    --gal-c: var(--yellow);
+}
+
+.g-big {
+    grid-column: span 2;
+    grid-row: span 2;
+}
+
+.g-tall {
+    grid-row: span 2;
+}
+
+.g-wide {
+    grid-column: span 2;
+}
+
+.gal-item::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, transparent 50%, rgba(10, 28, 52, .55) 100%);
+    opacity: .65;
+    transition: opacity .3s ease;
+    pointer-events: none;
+}
+
+.gal-item img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform .5s ease;
+}
+
+.gal-item:hover,
+.gal-item:focus-visible {
+    transform: translateY(-5px);
+    box-shadow: 0 18px 36px rgba(10, 37, 64, .16), 0 0 0 3px var(--gal-c);
+}
+
+.gal-item:hover::after {
+    opacity: .9;
+}
+
+.gal-item:hover img {
+    transform: scale(1.06);
+}
+
+.gal-tag {
+    position: absolute;
+    left: 14px;
+    bottom: 14px;
+    z-index: 2;
+    display: inline-flex;
+    align-items: center;
+    gap: .4rem;
+    padding: .35rem .9rem;
+    border-radius: 50px;
+    background: rgba(255, 255, 255, .95);
+    color: var(--ink);
+    font-size: .8rem;
+    font-weight: 600;
+    box-shadow: 0 4px 12px rgba(10, 37, 64, .15);
+}
+
+.gal-tag::before {
+    content: "";
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--gal-c);
+}
+
+.gal-zoom {
+    position: absolute;
+    top: 14px;
+    right: 14px;
+    z-index: 2;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, .94);
+    color: var(--ink);
+    font-size: .95rem;
+    box-shadow: 0 6px 16px rgba(10, 37, 64, .18);
+    opacity: .9;
+    transform: scale(.92);
+    transition: transform .25s ease, background .25s ease, color .25s ease, opacity .25s ease;
+}
+
+.gal-item:hover .gal-zoom,
+.gal-item:focus-visible .gal-zoom {
+    opacity: 1;
+    transform: scale(1);
+    background: var(--gal-c);
+    color: #fff;
+}
+
+.gal--yellow:hover .gal-zoom,
+.gal--yellow:focus-visible .gal-zoom {
+    color: var(--ink);
+}
+
+.gal-item.is-hidden {
+    display: none;
+}
+
+.gal-item.is-showing {
+    animation: galPop .35s ease both;
+}
+
+@keyframes galPop {
+    from {
+        opacity: 0;
+        transform: scale(.95);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+.gal-empty {
+    text-align: center;
+    padding: 2.5rem 1rem;
+    margin: 1rem 0 0;
+    color: var(--txt);
+    font-weight: 600;
+    font-size: 1.05rem;
+}
+
+.gal-cta {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1rem;
+}
+
+/* ----- Lightbox ----- */
+body.gal-lock {
+    overflow: hidden;
+}
+
+.gal-lightbox[hidden] {
+    display: none;
+}
+
+.gal-lightbox {
+    position: fixed;
+    inset: 0;
+    z-index: 2050;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1.5rem 4.5rem;
+    background: rgba(10, 25, 45, .92);
+    backdrop-filter: blur(4px);
+}
+
+.gal-lb-figure {
+    margin: 0;
+    max-width: min(960px, 100%);
+    text-align: center;
+}
+
+.gal-lb-figure img {
+    display: block;
+    max-width: 100%;
+    max-height: 78vh;
+    margin: 0 auto;
+    border-radius: 20px;
+    border: 6px solid #fff;
+    box-shadow: 0 24px 60px rgba(0, 0, 0, .45);
+    object-fit: contain;
+    background: #fff;
+    animation: galPop .25s ease both;
+}
+
+.gal-lb-figure figcaption {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    margin-top: .9rem;
+    color: #fff;
+    font-size: .96rem;
+    font-weight: 500;
+}
+
+.gal-lb-count {
+    flex: none;
+    padding: .25rem .75rem;
+    border-radius: 50px;
+    background: rgba(255, 255, 255, .15);
+    font-size: .84rem;
+    font-weight: 600;
+}
+
+.gal-lb-btn {
+    position: fixed;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 48px;
+    height: 48px;
+    border: 0;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, .16);
+    color: #fff;
+    font-size: 1.35rem;
+    cursor: pointer;
+    transition: background .2s, transform .2s;
+}
+
+.gal-lb-btn:hover,
+.gal-lb-btn:focus-visible {
+    background: var(--red);
+    transform: scale(1.06);
+}
+
+.gal-lb-close {
+    top: 1.25rem;
+    right: 1.25rem;
+}
+
+.gal-lb-prev {
+    left: 1.25rem;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.gal-lb-next {
+    right: 1.25rem;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.gal-lb-prev:hover,
+.gal-lb-prev:focus-visible,
+.gal-lb-next:hover,
+.gal-lb-next:focus-visible {
+    transform: translateY(-50%) scale(1.06);
+}
+
+/* ----- Responsive ----- */
+@media (max-width: 991.98px) {
+    .gal-grid {
+        grid-template-columns: repeat(2, 1fr);
+        grid-auto-rows: 210px;
+    }
+
+    .g-big {
+        grid-column: span 2;
+        grid-row: span 1;
+    }
+
+    .g-tall {
+        grid-row: span 1;
+    }
+}
+
+@media (max-width: 575.98px) {
+    .gal-grid {
+        grid-template-columns: 1fr;
+        grid-auto-rows: 240px;
+        gap: 1rem;
+    }
+
+    .g-big,
+    .g-tall,
+    .g-wide {
+        grid-column: span 1;
+        grid-row: span 1;
+    }
+
+    .gal-filter {
+        padding: .48rem 1rem;
+        font-size: .84rem;
+    }
+
+    .gal-lightbox {
+        padding: 4rem 1rem 1.5rem;
+    }
+
+    .gal-lb-prev,
+    .gal-lb-next {
+        top: auto;
+        bottom: 1rem;
+        transform: none;
+    }
+
+    .gal-lb-prev:hover,
+    .gal-lb-prev:focus-visible,
+    .gal-lb-next:hover,
+    .gal-lb-next:focus-visible {
+        transform: scale(1.06);
+    }
+
+    .gal-lb-prev {
+        left: 1rem;
+    }
+
+    .gal-lb-next {
+        right: 1rem;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .gal-item,
+    .gal-item img,
+    .gal-zoom,
+    .gal-filter,
+    .gal-item.is-showing {
+        transition: none;
+        animation: none;
+    }
+}
+

@@ -130,24 +130,24 @@ ob_start();
                         </div>
                     </div>
 
-                    <div class="col-lg-7 founder-body">
-                        <span class="founder-kicker"><i class="bi bi-person-heart" aria-hidden="true"></i>Meet Our Founder</span>
-                        <h2 id="founderTitle">Gurvinder Singh</h2>
-                        <p class="founder-role">Founder · MRV International Pre-School &amp; Day Care</p>
-                        <p class="founder-lead">Driven by a lifelong commitment to meaningful early childhood education, Gurvinder Singh envisioned a preschool where curiosity, warmth, and strong values come together from day one.</p>
-                        <p>Under his leadership, MRV International has grown into a nurturing learning community where every child is respected as an individual—guided gently to build confidence, creativity, and a genuine love for discovery in a safe, joyful environment.</p>
+                    <!--<div class="col-lg-7 founder-body">-->
+                    <!--    <span class="founder-kicker"><i class="bi bi-person-heart" aria-hidden="true"></i>Meet Our Founder</span>-->
+                    <!--    <h2 id="founderTitle">Gurvinder Singh</h2>-->
+                    <!--    <p class="founder-role">Founder · MRV International Pre-School &amp; Day Care</p>-->
+                    <!--    <p class="founder-lead">Driven by a lifelong commitment to meaningful early childhood education, Gurvinder Singh envisioned a preschool where curiosity, warmth, and strong values come together from day one.</p>-->
+                    <!--    <p>Under his leadership, MRV International has grown into a nurturing learning community where every child is respected as an individual—guided gently to build confidence, creativity, and a genuine love for discovery in a safe, joyful environment.</p>-->
 
-                        <blockquote class="founder-quote">
-                            <i class="bi bi-quote" aria-hidden="true"></i>
-                            <p>"When we nurture a child's natural curiosity with love, patience, and purpose, we don't just prepare them for school—we prepare them for life."</p>
-                        </blockquote>
+                    <!--    <blockquote class="founder-quote">-->
+                    <!--        <i class="bi bi-quote" aria-hidden="true"></i>-->
+                    <!--        <p>"When we nurture a child's natural curiosity with love, patience, and purpose, we don't just prepare them for school—we prepare them for life."</p>-->
+                    <!--    </blockquote>-->
 
-                        <div class="founder-pillars">
-                            <span><i class="bi bi-heart-fill" aria-hidden="true"></i>Child-First Philosophy</span>
-                            <span><i class="bi bi-shield-check" aria-hidden="true"></i>Safe &amp; Caring Spaces</span>
-                            <span><i class="bi bi-lightbulb-fill" aria-hidden="true"></i>Holistic Growth</span>
-                        </div>
-                    </div>
+                    <!--    <div class="founder-pillars">-->
+                    <!--        <span><i class="bi bi-heart-fill" aria-hidden="true"></i>Child-First Philosophy</span>-->
+                    <!--        <span><i class="bi bi-shield-check" aria-hidden="true"></i>Safe &amp; Caring Spaces</span>-->
+                    <!--        <span><i class="bi bi-lightbulb-fill" aria-hidden="true"></i>Holistic Growth</span>-->
+                    <!--    </div>-->
+                    <!--</div>-->
                 </div>
             </div>
         </div>

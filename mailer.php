@@ -65,8 +65,8 @@ function mrv_send_mail(
         $mail->Port       = 587;
         $mail->CharSet    = 'UTF-8';
 
-        $mail->setFrom('web.hoverbusinessservices@gmail.com', 'MRV International');
-        $mail->addAddress('mailme.sadhana98@gmail.com', 'MRV International');
+        $mail->setFrom('hostinghbs@gmail.com', 'MRV International');
+        $mail->addAddress('info@mrvinternational.in', 'MRV International');
 
         if ($replyToEmail !== '' && filter_var($replyToEmail, FILTER_VALIDATE_EMAIL)) {
             $mail->addReplyTo($replyToEmail, $replyToName !== '' ? $replyToName : $replyToEmail);

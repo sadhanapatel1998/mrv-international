@@ -154,7 +154,7 @@ ob_start();
                     <article class="ct-card ct-card--blue">
                         <span class="ct-icon"><i class="bi bi-envelope-fill" aria-hidden="true"></i></span>
                         <h3>Email Us</h3>
-                        <p><a href="mailto:mrvonlinemarketing@gmail.com">mrvonlinemarketing@gmail.com</a></p>
+                        <p><a href="mailto:info@mrvinternational.in">info@mrvinternational.in</a></p>
                     </article>
                 </div>
                 <div class="col-md-6 col-lg-3">

@@ -41,6 +41,7 @@
     <link href="assets/css/team.css" rel="stylesheet">
     <link href="assets/css/services.css" rel="stylesheet">
     <link href="assets/css/contact.css" rel="stylesheet">
+    <link href="assets/css/gallery.css" rel="stylesheet">
 
     <script type="application/ld+json">
         {

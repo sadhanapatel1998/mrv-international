@@ -252,6 +252,36 @@ body {
     box-shadow: none
 }
 
+.btn-yellow-sgs {
+    background: var(--red);
+    color: #fff;
+    border-radius: 50px;
+    padding: .55rem 1.6rem;
+    font-weight: 600;
+    border: 2px solid var(--red);
+    box-shadow: 0 5px 0 var(--red-dark);
+    transition: transform .15s, box-shadow .15s
+}
+
+.btn-yellow-sgs.btn-lg {
+    padding: .8rem 2.2rem;
+    font-size: 14px;
+}
+
+.btn-yellow-sgs:hover,
+.btn-yellow-sgs:focus-visible {
+    background: var(--red);
+    border-color: var(--red);
+    color: #fff;
+    transform: translateY(2px);
+    box-shadow: 0 3px 0 var(--red-dark)
+}
+
+.btn-yellow-sgs:active {
+    transform: translateY(5px);
+    box-shadow: none
+}
+
 .btn-outline-sgs {
     background: #fff;
     color: var(--blue-dark);

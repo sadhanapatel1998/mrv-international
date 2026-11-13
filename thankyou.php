@@ -22,7 +22,7 @@ ob_start();
     <!-- ===== PAGE BANNER ===== -->
     <section class="page-banner" aria-labelledby="pageTitle">
         <div class="container-xl pb-inner">
-            <span class="pb-kicker"><i class="bi bi-check-circle-fill" aria-hidden="true"></i>Submission Received</span>
+            
             <h1 class="pb-title" id="pageTitle"><?= htmlspecialchars($heading) ?></h1>
             <p class="pb-text"><?= htmlspecialchars($subtext) ?></p>
             <nav aria-label="Breadcrumb">

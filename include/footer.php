@@ -8,9 +8,9 @@
                 <a class="ft-logo" href="./"><img src="assets/images/logo.png" alt="MRV International Pre-School &amp; Day Care" width="180" height="64" loading="lazy"></a>
                 <p class="ft-about">India's first Multiple Intelligence-based preschool. Nurturing young minds with heart, science, and 50 years of educational legacy.</p>
                 <div class="ft-social">
-                    <a href="#social" class="ft-soc--blue" aria-label="Facebook (coming soon)" aria-disabled="true" onclick="return false;"><i class="bi bi-facebook"></i></a>
-                    <a href="#social" class="ft-soc--red" aria-label="Instagram (coming soon)" aria-disabled="true" onclick="return false;"><i class="bi bi-instagram"></i></a>
-                    <a href="#social" class="ft-soc--yellow" aria-label="YouTube (coming soon)" aria-disabled="true" onclick="return false;"><i class="bi bi-youtube"></i></a>
+                    <a href="https://www.facebook.com/mrvinternationalpublicschool/" target="_blank" class="ft-soc--blue" aria-label="Facebook (coming soon)" ><i class="bi bi-facebook"></i></a>
+                    <a href="https://www.instagram.com/mrvinternational_" target="_blank" class="ft-soc--red" aria-label="Instagram (coming soon)" ><i class="bi bi-instagram"></i></a>
+                    <!--<a href="#social" class="ft-soc--yellow" aria-label="YouTube (coming soon)" aria-disabled="true" onclick="return false;"><i class="bi bi-youtube"></i></a>-->
                     <a href="https://wa.me/919250900572" class="ft-soc--green" target="_blank" rel="noopener" aria-label="WhatsApp"><i class="bi bi-whatsapp"></i></a>
                 </div>
             </div>

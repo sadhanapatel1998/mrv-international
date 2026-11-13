@@ -45,6 +45,7 @@ $isProgramsActive = in_array($currentPage, $programPages, true);
                 <div class="nav-cta">
                     <a href="franchise" class="btn btn-outline-sgs">Partner With Us</a>
                     <a href="contact-us#contact" class="btn btn-sgs">Enquire Now</a>
+                    <a href="gallery" class="btn btn-yellow-sgs">Gallery</a>
                 </div>
             </div>
         </div>
